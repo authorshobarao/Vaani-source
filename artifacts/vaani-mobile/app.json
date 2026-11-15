@@ -1,0 +1,76 @@
+{
+  "expo": {
+    "name": "Vaani",
+    "slug": "vaani-mobile",
+    "owner": "baheldeepti",
+    "version": "1.0.1",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "scheme": "vaani-mobile",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/images/icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#faf8f4"
+    },
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "app.replit.vaani",
+      "buildNumber": "8",
+      "config": {
+        "usesNonExemptEncryption": false
+      },
+      "infoPlist": {
+        "NSSpeechRecognitionUsageDescription": "Vaani uses speech recognition to turn what you say into text for your questions and notes.",
+        "NSMicrophoneUsageDescription": "Vaani uses the microphone so you can speak your questions and notes instead of typing."
+      }
+    },
+    "android": {
+      "package": "app.replit.vaani",
+      "versionCode": 1,
+      "permissions": [
+        "android.permission.RECORD_AUDIO"
+      ]
+    },
+    "web": {
+      "favicon": "./assets/images/icon.png"
+    },
+    "plugins": [
+      [
+        "expo-router",
+        {
+          "origin": "https://replit.com/"
+        }
+      ],
+      "expo-font",
+      "expo-web-browser",
+      [
+        "expo-speech-recognition",
+        {
+          "microphonePermission": "Vaani uses the microphone so you can speak your questions and notes instead of typing.",
+          "speechRecognitionPermission": "Vaani uses speech recognition to turn what you say into text for your questions and notes.",
+          "androidSpeechServicePackages": [
+            "com.google.android.googlequicksearchbox"
+          ]
+        }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Vaani lets you attach a photo of a lab report or medical document so it can suggest questions to ask your doctor.",
+          "cameraPermission": "Vaani uses the camera so you can take a photo of a lab report or medical document to get suggested questions."
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true,
+      "reactCompiler": true
+    },
+    "extra": {
+      "eas": {
+        "projectId": "db2cca27-f091-40ce-8ba5-35d89041b52f"
+      }
+    }
+  }
+}

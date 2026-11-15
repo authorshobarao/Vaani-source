@@ -1,0 +1,2 @@
+screenshots/vaani-1.0.0-aab.zip filter=lfs diff=lfs merge=lfs -text
+screenshots/vaani-1.0.0.aab filter=lfs diff=lfs merge=lfs -text

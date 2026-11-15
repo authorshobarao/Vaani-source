@@ -1,0 +1,37 @@
+When "Cancer" is selected, first show a general set of cancer questions, then reveal 
+a SECOND dropdown labeled "Which type?" with: Breast, Lung, Colorectal, Prostate, 
+Skin / Melanoma, Cervical, Leukemia, Lymphoma. Selecting a type adds a few 
+type-specific questions below the general ones.
+
+GENERAL CANCER QUESTIONS
+- Diagnosis: What type and stage is it? What tests confirmed it? Where is it, and has 
+  it spread?
+- Treatment options: What are ALL my options (surgery, chemo, radiation, immunotherapy, 
+  targeted therapy, watchful waiting)? What do you recommend and why? Is the goal to 
+  cure it or control it?
+- Side effects: What are the side effects of each option? Will it affect fertility? 
+  Any long-term effects?
+- Logistics: How long is treatment? How will it affect work and daily life? What about 
+  cost and insurance? How do I get a second opinion?
+- Support: Are there clinical trials? Can I see palliative care for symptom support? 
+  Are there support groups? Who is my main point of contact?
+- Follow-up: How will we know it's working? What's the scan schedule? What are signs 
+  of recurrence?
+
+TYPE-SPECIFIC (add a few each)
+- Breast: What's my hormone-receptor and HER2 status? Lumpectomy or mastectomy? Should 
+  I get genetic (BRCA) testing?
+- Lung: Was it caused by smoking, and does that change treatment? What's my mutation 
+  testing showing? Am I a surgery candidate?
+- Colorectal: Do I need a colostomy? Was the tumor tested for genetic markers? What 
+  about my family's screening?
+- Prostate: What's my Gleason score and PSA? Is active surveillance an option for me? 
+  How will treatment affect urinary and sexual function?
+- Skin / Melanoma: How deep is it? Do we need to check my lymph nodes? How often should 
+  I have full-body skin checks?
+- Cervical: What stage and HPV status? How will treatment affect fertility? What 
+  follow-up Pap/HPV schedule?
+- Leukemia: Which type (acute/chronic)? Do I need treatment now or monitoring? Will I 
+  need a bone marrow transplant?
+- Lymphoma: Hodgkin or non-Hodgkin, and which subtype? What's the treatment plan and 
+  timeline? What are the long-term effects?

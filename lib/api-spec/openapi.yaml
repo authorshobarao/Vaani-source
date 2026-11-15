@@ -1,0 +1,465 @@
+openapi: 3.1.0
+info:
+  # Do not change the title, if the title changes, the import paths will be broken
+  title: Api
+  version: 0.1.0
+  description: API specification
+servers:
+  - url: /api
+    description: Base API path
+tags:
+  - name: health
+    description: Health operations
+  - name: ai
+    description: AI-powered suggestions
+  - name: analytics
+    description: Anonymous usage analytics and PMF survey
+paths:
+  /whisper-transcribe:
+    post:
+      operationId: whisperTranscribe
+      tags: [ai]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TranscribeBody"
+      responses:
+        "200":
+          description: Audio transcribed with Whisper
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TranscribeResult"
+  /analyze-report:
+    post:
+      operationId: analyzeReport
+      tags: [ai]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AnalyzeReportBody"
+      responses:
+        "200":
+          description: Suggested questions
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuggestQuestionsResponse"
+  /custom-topic-questions:
+    post:
+      operationId: customTopicQuestions
+      tags: [ai]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CustomTopicBody"
+      responses:
+        "200":
+          description: Topic categories and reference
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CustomTopicResult"
+  /transcribe:
+    post:
+      operationId: transcribeAudio
+      tags: [ai]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TranscribeBody"
+      responses:
+        "200":
+          description: Transcribed audio
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TranscribeResult"
+  /events:
+    post:
+      operationId: ingestEvents
+      tags: [analytics]
+      summary: Ingest a batch of anonymous usage events
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/IngestEventsBody"
+      responses:
+        "200":
+          description: Events accepted
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IngestEventsResponse"
+        "400":
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+  /pmf-survey:
+    post:
+      operationId: submitPmfSurvey
+      tags: [analytics]
+      summary: Submit a PMF survey response
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PmfSurveyBody"
+      responses:
+        "200":
+          description: Response stored
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OkResponse"
+        "400":
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+  /pmf-summary:
+    get:
+      operationId: getPmfSummary
+      tags: [analytics]
+      summary: Summary of usage funnel, PMF score, and recent feedback
+      responses:
+        "200":
+          description: Summary
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PmfSummaryResponse"
+  /healthz:
+    get:
+      operationId: healthCheck
+      tags: [health]
+      summary: Health check
+      description: Returns server health status
+      responses:
+        "200":
+          description: Healthy
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HealthStatus"
+  /suggest-questions:
+    post:
+      operationId: suggestQuestions
+      tags: [ai]
+      summary: Suggest patient questions based on their situation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SuggestQuestionsBody"
+      responses:
+        "200":
+          description: List of suggested questions
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuggestQuestionsResponse"
+        "400":
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "500":
+          description: AI service error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+components:
+  schemas:
+    InlineMedia:
+      type: object
+      required: [mediaType, data]
+      properties:
+        mediaType:
+          type: string
+        data:
+          type: string
+    AnalyzeReportBody:
+      type: object
+      required: [condition, lang, file]
+      properties:
+        condition:
+          type: string
+        lang:
+          type: string
+        file:
+          $ref: "#/components/schemas/InlineMedia"
+    CustomTopicBody:
+      type: object
+      required: [topic, lang]
+      properties:
+        topic:
+          type: string
+        lang:
+          type: string
+        mode:
+          type: string
+          enum: [condition, medication]
+          description: Omitted by existing clients; defaults to condition.
+        includeSpecialists:
+          type: boolean
+          description: Web-only opt-in for condition specialty guidance; omitted by existing clients.
+    CustomTopicResult:
+      type: object
+      required: [sections, article]
+      properties:
+        sections:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+        article:
+          type: [object, "null"]
+          required: [name, url]
+          properties:
+            name:
+              type: string
+            url:
+              type: string
+        medication:
+          $ref: "#/components/schemas/MedicationReferences"
+        specialists:
+          type: array
+          maxItems: 3
+          items:
+            $ref: "#/components/schemas/MedicalSpecialist"
+    MedicalSpecialist:
+      type: object
+      required: [name, description]
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+    MedicationSource:
+      type: object
+      required: [name, url]
+      properties:
+        name:
+          type: string
+        url:
+          type: string
+    MedicationReferences:
+      type: object
+      required: [foodAlcohol, otherDrugs, sources]
+      properties:
+        foodAlcohol:
+          type: array
+          items:
+            type: string
+          description: Verbatim source excerpts, never model-generated.
+        otherDrugs:
+          type: array
+          items:
+            type: string
+          description: Verbatim source excerpts, never model-generated.
+        sources:
+          type: array
+          items:
+            $ref: "#/components/schemas/MedicationSource"
+    TranscribeBody:
+      type: object
+      required: [lang, audio]
+      properties:
+        lang:
+          type: string
+        audio:
+          $ref: "#/components/schemas/InlineMedia"
+    TranscribeResult:
+      type: object
+      required: [text]
+      properties:
+        text:
+          type: string
+    HealthStatus:
+      type: object
+      properties:
+        status:
+          type: string
+      required:
+        - status
+    SuggestQuestionsBody:
+      type: object
+      properties:
+        lang:
+          type: string
+        condition:
+          type: string
+        description:
+          type: string
+      required:
+        - condition
+        - description
+    SuggestQuestionsResponse:
+      type: object
+      properties:
+        questions:
+          type: array
+          items:
+            type: string
+      required:
+        - questions
+    IngestEventsBody:
+      type: object
+      properties:
+        deviceId:
+          type: string
+          maxLength: 64
+        events:
+          type: array
+          maxItems: 100
+          items:
+            $ref: "#/components/schemas/ClientEvent"
+      required:
+        - deviceId
+        - events
+    ClientEvent:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 64
+        props:
+          type: object
+          additionalProperties: true
+        lang:
+          type: string
+          maxLength: 8
+        ts:
+          type: string
+          format: date-time
+      required:
+        - name
+    IngestEventsResponse:
+      type: object
+      properties:
+        accepted:
+          type: integer
+      required:
+        - accepted
+    PmfSurveyBody:
+      type: object
+      properties:
+        deviceId:
+          type: string
+          maxLength: 64
+        disappointment:
+          type: string
+          enum: [very, somewhat, not]
+        feedback:
+          type: string
+          maxLength: 2000
+        lang:
+          type: string
+          maxLength: 8
+      required:
+        - deviceId
+        - disappointment
+    OkResponse:
+      type: object
+      properties:
+        ok:
+          type: boolean
+      required:
+        - ok
+    PmfSummaryResponse:
+      type: object
+      properties:
+        totals:
+          type: object
+          properties:
+            devices:
+              type: integer
+            events:
+              type: integer
+          required: [devices, events]
+        eventCounts:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              count:
+                type: integer
+              devices:
+                type: integer
+            required: [name, count, devices]
+        funnel:
+          type: array
+          items:
+            type: object
+            properties:
+              step:
+                type: string
+              devices:
+                type: integer
+              conversionFromPrevious:
+                type: number
+            required: [step, devices]
+        pmf:
+          type: object
+          properties:
+            responses:
+              type: integer
+            very:
+              type: integer
+            somewhat:
+              type: integer
+            notDisappointed:
+              type: integer
+            score:
+              type: number
+              description: Percent of respondents answering "very disappointed"
+          required: [responses, very, somewhat, notDisappointed, score]
+        recentFeedback:
+          type: array
+          items:
+            type: object
+            properties:
+              disappointment:
+                type: string
+              feedback:
+                type: string
+              lang:
+                type: string
+              createdAt:
+                type: string
+                format: date-time
+            required: [disappointment, feedback, createdAt]
+      required:
+        - totals
+        - eventCounts
+        - funnel
+        - pmf
+        - recentFeedback
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+      required:
+        - error

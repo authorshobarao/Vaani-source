@@ -1,0 +1,171 @@
+kind = "web"
+  previewPath = "/"
+  title = "My Visit Prep"
+  version = "1.0.0"
+  id = "artifacts/my-visit-prep"
+  router = "path"
+
+  [[integratedSkills]]
+  name = "react-vite"
+  version = "1.0.0"
+
+  [[services]]
+  name = "web"
+  paths = [ "/" ]
+  localPort = 19264
+
+  [services.development]
+  run = "pnpm --filter @workspace/my-visit-prep run dev"
+
+  [services.production]
+  build = [ "pnpm", "--filter", "@workspace/my-visit-prep", "run", "build" ]
+  publicDir = "artifacts/my-visit-prep/dist/public"
+  serve = "static"
+
+  [[services.production.rewrites]]
+  from = "/privacy"
+  to = "/privacy.html"
+
+  [[services.production.rewrites]]
+  from = "/es/"
+  to = "/es/index.html"
+
+  [[services.production.rewrites]]
+  from = "/es/privacy"
+  to = "/es/privacy.html"
+
+  [[services.production.rewrites]]
+  from = "/hi/"
+  to = "/hi/index.html"
+
+  [[services.production.rewrites]]
+  from = "/hi/privacy"
+  to = "/hi/privacy.html"
+
+  [[services.production.rewrites]]
+  from = "/vi/"
+  to = "/vi/index.html"
+
+  [[services.production.rewrites]]
+  from = "/vi/privacy"
+  to = "/vi/privacy.html"
+
+  [[services.production.rewrites]]
+  from = "/zh/"
+  to = "/zh/index.html"
+
+  [[services.production.rewrites]]
+  from = "/zh/privacy"
+  to = "/zh/privacy.html"
+
+  [[services.production.rewrites]]
+  from = "/ta/"
+  to = "/ta/index.html"
+
+  [[services.production.rewrites]]
+  from = "/ta/privacy"
+  to = "/ta/privacy.html"
+
+  [[services.production.rewrites]]
+  from = "/kn/"
+  to = "/kn/index.html"
+
+  [[services.production.rewrites]]
+  from = "/kn/privacy"
+  to = "/kn/privacy.html"
+
+  [[services.production.rewrites]]
+  from = "/fr/"
+  to = "/fr/index.html"
+
+  [[services.production.rewrites]]
+  from = "/fr/privacy"
+  to = "/fr/privacy.html"
+
+  [[services.production.rewrites]]
+  from = "/pt/"
+  to = "/pt/index.html"
+
+  [[services.production.rewrites]]
+  from = "/pt/privacy"
+  to = "/pt/privacy.html"
+
+  [[services.production.rewrites]]
+  from = "/tl/"
+  to = "/tl/index.html"
+
+  [[services.production.rewrites]]
+  from = "/tl/privacy"
+  to = "/tl/privacy.html"
+
+  [[services.production.rewrites]]
+  from = "/ja/"
+  to = "/ja/index.html"
+
+  [[services.production.rewrites]]
+  from = "/ja/privacy"
+  to = "/ja/privacy.html"
+
+  [[services.production.rewrites]]
+  from = "/ko/"
+  to = "/ko/index.html"
+
+  [[services.production.rewrites]]
+  from = "/ko/privacy"
+  to = "/ko/privacy.html"
+
+  [[services.production.rewrites]]
+  from = "/th/"
+  to = "/th/index.html"
+
+  [[services.production.rewrites]]
+  from = "/th/privacy"
+  to = "/th/privacy.html"
+
+  [[services.production.rewrites]]
+  from = "/id/"
+  to = "/id/index.html"
+
+  [[services.production.rewrites]]
+  from = "/id/privacy"
+  to = "/id/privacy.html"
+
+  [[services.production.rewrites]]
+  from = "/bn/"
+  to = "/bn/index.html"
+
+  [[services.production.rewrites]]
+  from = "/bn/privacy"
+  to = "/bn/privacy.html"
+
+  [[services.production.rewrites]]
+  from = "/ur/"
+  to = "/ur/index.html"
+
+  [[services.production.rewrites]]
+  from = "/ur/privacy"
+  to = "/ur/privacy.html"
+
+  [[services.production.rewrites]]
+  from = "/te/"
+  to = "/te/index.html"
+
+  [[services.production.rewrites]]
+  from = "/te/privacy"
+  to = "/te/privacy.html"
+
+  [[services.production.rewrites]]
+  from = "/ml/"
+  to = "/ml/index.html"
+
+  [[services.production.rewrites]]
+  from = "/ml/privacy"
+  to = "/ml/privacy.html"
+
+  [services.env]
+  PORT = "19264"
+  BASE_PATH = "/"
+
+  [[services.production.rewrites]]
+  from = "/pmf"
+  to = "/index.html"

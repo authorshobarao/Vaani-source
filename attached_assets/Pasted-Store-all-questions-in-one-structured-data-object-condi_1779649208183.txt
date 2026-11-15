@@ -1,0 +1,36 @@
+Store all questions in one structured data object (condition → categories → questions) 
+so it's easy to extend later. Render them grouped under category headers.
+
+Populate these:
+
+DIABETES
+- Understanding it: What type do I have? What were my key numbers (A1C, fasting 
+  glucose)? What's my target A1C? Is this manageable or reversible?
+- Treatment: What medication do I need and how does it work? Will I need insulin? 
+  What side effects should I watch for?
+- Monitoring: How often should I check my blood sugar? Should I use a CGM? When do 
+  we recheck my A1C?
+- Lifestyle: What diet changes help most? How much exercise? How does my weight affect this?
+- Follow-up & complications: How does this affect my eyes, kidneys, feet, and heart? 
+  What screenings do I need and when? When is my next visit?
+
+HIGH BLOOD PRESSURE
+- Understanding it: What were my numbers and what's my target? What's likely causing it?
+- Treatment: Which medication and why? What are the side effects? Can I try lifestyle changes first?
+- Monitoring: Should I check at home, and how often? What readings should worry me?
+- Lifestyle: What about salt, alcohol, exercise, weight, and stress?
+- Follow-up: When do we recheck? What organs are at risk if it's not controlled?
+
+SKIN RASH
+- What is it: What's the likely cause? Is it contagious or allergic? Do I need a test or biopsy?
+- Treatment: What cream or medication, and for how long? What if it doesn't clear up?
+- Triggers: What products, foods, or activities should I avoid?
+- When to worry: What signs mean it's getting worse? When should I come back or go to the ER?
+
+SKIN BUMP OR LUMP
+- What is it: What do you think this is? Do we need a biopsy or imaging? Could it be cancer?
+- Options: Should it be removed? What are the risks of removing it vs. watching it?
+- Changes: How fast might it change? What signs mean I should come back urgently?
+- Follow-up: When should we recheck it?
+
+Each question should be on its own line so it can later become a checkable item.

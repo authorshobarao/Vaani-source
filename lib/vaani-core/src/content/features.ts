@@ -1,0 +1,91 @@
+import { sanitizeSpecialists, SPECIALTIES } from "./specialists";
+
+/** Additional UI keys are merged into each existing language's ui object. */
+export const FEATURE_EN = {
+  selectorHeading: "Choose a health condition or a medication you take",
+  selectorGroupLabel: "Prepare questions about",
+  conditionTab: "Health condition",
+  medicationTab: "Medication",
+  medicationPrompt: "Which medication would you like to talk to your doctor about?",
+  missingCondition: "My condition isn't listed",
+  chooseCondition: "— Choose a health condition —",
+  specialistHeading: "Which specialist can help?",
+  specialistTitle: "Specialists who may help",
+  specialistNote: "A primary care doctor can refer you to the right specialist. This is general guidance, not a diagnosis or medical advice.",
+  specialistQuestion: "Should I see a specialist for this, and which type?",
+  referralTitle: "Follow-up",
+  medicationListTitle: "Other medications and supplements I take",
+  medicationListHelp: "List your other prescriptions, over-the-counter medicines, and supplements to review with your doctor or pharmacist.",
+  interactionsTitle: "Interactions",
+  keyInteractions: "Key interactions",
+  foodAlcohol: "Food & alcohol",
+  otherDrugs: "Other drugs",
+  noVerifiedInteractions: "We couldn't find verified interaction information for this medication. Ask your pharmacist or doctor.",
+  interactionsNote: "This is not a complete list. Always check with your pharmacist or doctor before combining medications, supplements, or foods.",
+  noExcerpt: "No excerpt found in the label for this group.",
+  labelExcerpt: "Excerpts from FDA prescribing label",
+  verbatimNote: "Excerpts below are copied word-for-word from the official label, not written by AI.",
+  translatedExcerptNote: "Translated excerpts from the official label. Check the original source with your pharmacist.",
+  productFormNote: "The source label may describe a particular form of this medication. Confirm the exact product and form with your pharmacist.",
+  medicationNotFound: "We couldn't find that medication. Please check the spelling and try again.",
+  didYouMean: "Did you mean {name}?",
+  networkError: "We couldn't reach the server. Check your connection and try again.",
+  rateLimitError: "Too many requests. Please wait a few minutes and try again.",
+  accessError: "The server denied access. Please try again later.",
+  serviceError: "This service isn't available at the configured server. Please try again later.",
+  serverError: "The server couldn't complete the request. Please try again in a moment.",
+  readCondition: "Read about this condition:",
+  readMedication: "Read about this medication:",
+  sourceCondition: "MedlinePlus — {topic}",
+  aboutTopic: "MedlinePlus (NIH) — {topic}",
+  changedLabel: "How has your condition changed since your last visit?",
+  changedPlaceholder: "e.g. blood sugar better controlled, new symptoms, medication changes...",
+  conditionUnderstanding: "Understanding it",
+  conditionTreatment: "Treatment",
+  conditionMonitoring: "Monitoring",
+  conditionLifestyle: "Lifestyle",
+  conditionFollowup: "Follow-up & complications",
+  medicationSafety: "Taking it safely",
+  medicationSideEffects: "Side effects",
+  medicationMonitoring: "Monitoring & follow-up",
+  medicationDisclaimer: "Conversation starters only, not medical advice.",
+  dosingDisclaimer: "Vaani never gives dosing recommendations — only questions to ask about dosing.",
+  medicationPlaceholder: 'e.g. "metformin" or "Ozempic"',
+  medicationEmpty: "Questions about what it is for, taking it safely, side effects, and follow-up, plus a list of other medications to review, will appear here.",
+  medicationQuestions: "Medication questions",
+  medicationName: "Medication name",
+  retry: "Retry",
+  add: "Add",
+  addToList: "Add to list",
+  noItems: "No items added yet.",
+  removeItem: "Remove {name}",
+  doctorAnswer: "Doctor's answer…",
+  dictateAnswer: "Dictate the doctor's answer",
+  remove: "Remove",
+  otherMedicationInput: "Other medication, supplement, or vitamin",
+  otherMedicationPlaceholder: "Medication, supplement, or vitamin",
+  dictateCondition: "Dictate a health condition",
+  dictateMedication: "Dictate a medication name",
+  dictateOtherMedication: "Dictate another medication or supplement",
+  dictateChanges: "Dictate changes since the last visit",
+  conditionLoading: "Loading condition guidance",
+  guidanceLoadError: "Saved specialist guidance could not be loaded. You can keep preparing; reset to clear the saved guidance.",
+  guidanceSaveError: "Specialist guidance could not be saved on this device. Keep this screen open to retain it.",
+  mobilePrintList: "Other medications, supplements, and vitamins to review",
+  specialties: Object.fromEntries(Object.entries(SPECIALTIES).map(([name, description]) => [name, { name, description }])) as Record<string, { name: string; description: string }>,
+};
+export type FeatureStrings = typeof FEATURE_EN;
+
+/** Canonical English names remain the allowlisted IDs, never translated API keys. */
+export function translatedSpecialists(input: unknown, ui: FeatureStrings) {
+  return sanitizeSpecialists(input).map(item => ui.specialties[item.name]);
+}
+
+export function conditionSectionTitles(ui: FeatureStrings): Record<string, string> {
+  return { understanding: ui.conditionUnderstanding, treatment: ui.conditionTreatment,
+    monitoring: ui.conditionMonitoring, lifestyle: ui.conditionLifestyle, followup: ui.conditionFollowup };
+}
+export function medicationSectionTitles(ui: FeatureStrings): Record<string, string> {
+  return { understanding: ui.conditionUnderstanding, safety: ui.medicationSafety, sideEffects: ui.medicationSideEffects,
+    interactions: ui.interactionsTitle, monitoring: ui.medicationMonitoring };
+}

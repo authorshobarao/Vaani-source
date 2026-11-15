@@ -1,0 +1,38 @@
+When "Chronic kidney disease (CKD)" is selected, show two controls at the top:
+
+1) A dropdown "What stage are you?" with options: Stage 1, Stage 2, Stage 3, Stage 4, 
+   Stage 5, "Not sure." (It's fine if this only adds a gentle note; the core questions 
+   show regardless.)
+2) A checkbox: "I'm interested in or being evaluated for a kidney transplant." When 
+   checked, reveal the Transplant Evaluation question set below the others.
+
+CKD QUESTIONS (always shown)
+- My diagnosis & stage: What stage am I, and what is my eGFR? What's my urine albumin 
+  (ACR)? What caused my CKD? Is it likely to get worse, and how fast?
+- Protecting my kidneys: What's my blood pressure target? Should I be on an ACE 
+  inhibitor, ARB, or an SGLT2 inhibitor? Which medicines or supplements should I avoid 
+  (for example, NSAIDs like ibuprofen)? If I'm diabetic, what's my sugar target?
+- Diet & lifestyle: Can I see a kidney dietitian? How much protein, sodium, potassium, 
+  and phosphorus is right for me? Any fluid limits? Which supplements are safe? What 
+  about exercise?
+- Monitoring: How often will we check my labs and eGFR? Which numbers should I track 
+  myself? What changes would concern you?
+- My medications: Do any of my current medications need dose changes for my kidneys? 
+  Should I start or stop anything?
+- Planning ahead: At what point do we talk about dialysis or transplant? What are all 
+  my options (hemodialysis, peritoneal dialysis, transplant, conservative care)? Could 
+  I avoid dialysis with an early ("pre-emptive") transplant?
+- Emotional & practical: How might this affect my energy and my work? Is there mental 
+  health support? Are there support groups or kidney organizations you recommend? Where 
+  can I get help with insurance and costs?
+- Red flags: What symptoms mean I should call you or go to the ER?
+
+TRANSPLANT EVALUATION (shown only when the checkbox is ticked)
+- Am I a candidate for a kidney transplant?
+- How and when do I get referred to a transplant center?
+- Can I be evaluated before I need dialysis (a pre-emptive transplant)?
+- What's the difference between a living donor and a deceased donor for me?
+- How do I find a living donor — and is it okay to ask family or friends?
+- What tests are involved in evaluation, and how long does the whole process take?
+- What could make me ineligible, and are any of those things I can work on or fix?
+- Can we start the evaluation process now?

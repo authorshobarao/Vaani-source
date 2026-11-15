@@ -1,0 +1,126 @@
+uploads = []
+
+[[generated]]
+id = "RtF2OhYFYDp9QWH2vrpFx"
+uri = "file://artifacts/vaani-mobile/assets/images/icon.png"
+type = "image"
+title = "generated_image"
+
+[[outputs]]
+id = "zzr_mdidUKjJFy3hyKhcD"
+uri = "file://exports/Vaani-Copyright-Deposit-Copy.pdf"
+type = "pdf"
+title = "Vaani — Copyright Deposit Copy (Shoba Rao)"
+logical_id = "8d80d869-e10d-41dc-bd2f-49f9329b9412"
+
+[[outputs]]
+id = "ZBJHMIdUOY1zLuUoAHo_r"
+uri = "file://artifacts/vaani-mobile/assets/images/icon.png"
+type = "image"
+title = "Vaani App Icon (1024×1024)"
+logical_id = "68eda531-1ffa-4736-a854-20fbd5711d98"
+
+[[outputs]]
+id = "PcMAnGC3VklnEEG6qwnV6"
+uri = "file://screenshots/appstore-1-home.jpg"
+type = "image"
+title = "Screenshot 1 — Home (1284×2778)"
+logical_id = "e71bc832-b4fc-44d2-a632-c12323f280b3"
+
+[[outputs]]
+id = "jnXsTAWChDfsY297MCmf1"
+uri = "file://screenshots/appstore-2-questions.jpg"
+type = "image"
+title = "Screenshot 2 — Questions (1284×2778)"
+logical_id = "1112d872-c465-4e83-b01e-4d789cc1f18a"
+
+[[outputs]]
+id = "h-pU8YYs869OiWgvt7ZNe"
+uri = "file://screenshots/appstore-3-language.jpg"
+type = "image"
+title = "Screenshot 3 — Languages (1284×2778)"
+logical_id = "52ddf35f-55e9-4421-93d5-0b7573c70354"
+
+[[outputs]]
+id = "6jPTJxDjZ-_IGvsSk3UuV"
+uri = "file://screenshots/vaani-1.0.0-aab.zip"
+type = "unspecified"
+title = "Vaani 1.0.0 — Android App Bundle (zipped)"
+logical_id = "5748b648-34ef-49d8-be0a-3e6c7d54bc80"
+
+[[outputs]]
+id = "8cqcwM1DZ1dto_MeVX4IB"
+uri = "file://screenshots/play/play-icon-512.png"
+type = "image"
+title = "App icon (512×512)"
+logical_id = "441f4495-0074-458f-9de8-04d4a19a01d2"
+
+[[outputs]]
+id = "4-tmr2qI98ee93Bj9CYdf"
+uri = "file://screenshots/play/play-feature-1024x500.png"
+type = "image"
+title = "Feature graphic (1024×500)"
+logical_id = "ccb3beed-905e-477c-bfb2-aeb470ef8caa"
+
+[[outputs]]
+id = "b6OX2wxWiJwap_qp85aAi"
+uri = "file://screenshots/play/play-1-home.jpg"
+type = "image"
+title = "Phone screenshot 1 — Home (1080×1920)"
+logical_id = "86141059-30f8-40f4-bed0-141ee6337aba"
+
+[[outputs]]
+id = "M6r7iPFFqQhvuydCtM-Q1"
+uri = "file://screenshots/play/play-2-questions.jpg"
+type = "image"
+title = "Phone screenshot 2 — Questions (1080×1920)"
+logical_id = "ab752c72-4a1f-411a-8db5-ef7d2248e54c"
+
+[[outputs]]
+id = "ilTRRJOv2wtH6-UE-tIDO"
+uri = "file://screenshots/play/play-3-language.jpg"
+type = "image"
+title = "Phone screenshot 3 — Languages (1080×1920)"
+logical_id = "44f72524-e323-4af9-b13a-8d1720e1ad19"
+
+[[outputs]]
+id = "OdY69y8H5TzBXVCcqbUth"
+uri = "file://exports/my-visit-prep-copyright-packet.pdf"
+type = "pdf"
+title = "My Visit Prep — Copyright Registration Prep Packet"
+logical_id = "768b281a-d9f6-4bb9-98a6-cfee83f69bd5"
+
+[[outputs]]
+id = "4UVWvFO9t1n5ewya1sjzk"
+uri = "file://attached_assets/reports/Vaani-Competitive-Research-PMF-Report.pdf"
+type = "pdf"
+title = "Vaani Competitive Research & PMF Report"
+logical_id = "26df1439-91c4-4035-8687-2fed11ac59aa"
+
+[[outputs]]
+id = "Xqk-pqLHga6UHK1xgB76u"
+uri = "file://docs/vaani-android-release-audit-2026-11-12.html"
+type = "html"
+title = "Vaani Android release-readiness audit"
+description = "Eight-area audit with confirmed findings, privacy and permission issues, current API 36 requirements, and outstanding signed-bundle/Play Console checks. No app changes or build submission."
+logical_id = "cd5d1797-7e6d-40a8-a061-4328690cf2f5"
+content_hash = "sha256:a1e0897c0071c2dc9c5be035ce9c1ecbcbf99cae8917e9202ef69985c9a9a0cb"
+size = 15180
+mtime_ms = 1794529269610
+storage_uri = "gcs://replit-rams-assets-reed/rams/assets/repl:6f8b0e7f-1e96-4bd0-bf89-5b8fe73ff440/cd5d1797-7e6d-40a8-a061-4328690cf2f5/23488afc-3e2c-4c71-8313-5adff37e541c"
+storage_version_token = "1794529300844168"
+content_type = "text/html"
+
+[[outputs]]
+id = "j7rJNWSWsfTJJ9OFfNFZg"
+uri = "file://docs/vaani-privacy-corrections-draft.html"
+type = "html"
+title = "Vaani privacy-policy corrections — draft"
+description = "Proposed replacement wording for audio processing, analytics, surveys, backups and data retention. Includes web OpenAI transcription and mobile Gemini fallback. Unconfirmed details are clearly marked; nothing has been published."
+logical_id = "6753710f-44c2-4fab-aa61-51db48af6041"
+content_hash = "sha256:e1a6876baa30b937327c8a2d42dd69c468bf5615b562b87a07b337208034f02f"
+size = 17334
+mtime_ms = 1794529675020
+storage_uri = "gcs://replit-rams-assets-reed/rams/assets/repl:6f8b0e7f-1e96-4bd0-bf89-5b8fe73ff440/6753710f-44c2-4fab-aa61-51db48af6041/ee0abe76-08e5-4444-8a65-9a26133349a0"
+storage_version_token = "1794529726137301"
+content_type = "text/html"

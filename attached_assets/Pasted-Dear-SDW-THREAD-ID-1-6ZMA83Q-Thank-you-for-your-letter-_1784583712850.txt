@@ -1,0 +1,16 @@
+Dear SDW,
+
+[THREAD ID:1-6ZMA83Q]
+
+Thank you for your letter regarding my preregistration application. Below is a revised description of the computer program, including a description of how AI technology was used and which aspects of the work are the product of human authorship.
+
+Nature, purpose, and function: The work, titled "Vaani," is a patient self-advocacy computer program that helps patients prepare for doctor visits. It presents curated question checklists for 19 health conditions, lets users add notes and personal questions, provides citations to authoritative medical sources, and supports 18 languages. It is published as an online-only product: a web application (askvaani.org) and a companion mobile application distributed through app stores. The version expected to be published is version 1.0.
+
+Structure and language: The program is written in TypeScript, using the React framework for the web application, React Native/Expo for the mobile application, and an Express server component. It is approximately 55,000 lines of source code, organized as a multi-package repository containing the web client, mobile client, shared content files, and server.
+
+Use of AI in creation, and human authorship: Portions of the program's source code were generated with the assistance of an AI coding tool, working under my direction and iterative review. I disclaim copyright in the AI-generated code itself. The claim is limited to the human-authored aspects of the work, which include: the original concept, purpose, and functional design of the program; the selection, arrangement, and organization of its features, screens, and content; the curated question checklists and health-condition content, including my selection and editing of the questions presented for each of the 19 conditions; the selection and arrangement of cited medical sources; and my editorial revisions to program text. These human contributions constitute the selection, coordination, arrangement, and editing that I ask the Office to consider as the basis for preregistration.
+
+Please let me know if any further information is needed.
+
+Sincerely,
+Shoba Rao

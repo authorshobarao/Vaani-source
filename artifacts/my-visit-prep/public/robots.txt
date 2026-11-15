@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://0c02b571-1894-44e7-aa91-f888116cd955-00-37a5ldaejq7am-69e7ak96.riker.replit.dev/sitemap.xml

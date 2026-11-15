@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Vaani — Android release-readiness audit</title>
+<style>
+:root{color-scheme:light}*{box-sizing:border-box}body{margin:0;background:#fdf3e7;color:#3a342e;font:16px/1.6 system-ui,sans-serif}main{max-width:1100px;margin:auto;padding:40px 24px 70px}h1,h2{color:#0f6e6e;line-height:1.2}h1{font-size:32px}h2{margin-top:36px}a{color:#0f6e6e}code{font-size:.88em;overflow-wrap:anywhere}section,.summary{background:#fffaf4;border:1px solid #dfd4c5;border-radius:12px;padding:22px;margin:20px 0}.summary{border-left:6px solid #f2884b}table{border-collapse:collapse;width:100%;font-size:14px}th,td{padding:14px 12px;text-align:left;vertical-align:top;border-bottom:1px solid #dfd4c5}th{color:#0f6e6e}.scroll{overflow-x:auto}li{margin:8px 0}.muted{color:#71695e}.status{font-weight:700}footer{margin-top:36px;border-top:1px solid #dfd4c5;padding-top:16px;font-size:14px}@media print{body{background:white}main{padding:0}section{break-inside:avoid}a{color:inherit}}
+</style>
+</head>
+<body><main>
+<h1>Vaani: Android release-readiness audit</h1>
+<p class="muted">Audit date: November 12, 2026 · Scope: current Android project configuration and source, public production endpoints, and current official Google Play requirements.</p>
+<div class="summary"><strong>Overall: not ready for release sign-off.</strong> Android identity, versioning configuration, production connectivity, and the SDK’s default target API are present. Privacy disclosures and permission minimization need work. Signing, the final merged release manifest, remote version history, and Play Console declarations are not verified.</div>
+<p>No application code, dependencies, configuration, credentials, or deployment settings were changed. No native release was built, signed, uploaded, or submitted. This report is not a security scan, legal approval, or guarantee of store acceptance.</p>
+
+<h2>Checklist results</h2>
+<div class="scroll"><table>
+<thead><tr><th>Area</th><th>Status</th><th>Evidence and required action</th></tr></thead><tbody>
+<tr><td>1. Package name</td><td class="status">Pass — configured<br>Not verified — availability</td><td><code>app.replit.vaani</code> is set in <code>artifacts/vaani-mobile/app.json</code> and appears in the introspected Android manifest. It is valid in form. Confirm ownership and availability in Play Console, and retain the established identifier. No package rename was made.</td></tr>
+<tr><td>2. Version name and code</td><td class="status">Pass — configured<br>Not verified — next release code</td><td>App version name is <code>1.0.1</code>; local Android <code>versionCode</code> is <code>1</code>. The existing production profile has <code>autoIncrement: true</code> and remote version sourcing in <code>eas.json</code>. The remote counter and highest previously uploaded Play version code were not accessed. Do not assume the next release code is 1: it must exceed every previous uploaded code for this package. The workspace package’s <code>0.0.0</code> is not the configured Android app version.</td></tr>
+<tr><td>3. Name, icon, splash</td><td class="status">Pass — source assets<br>Needs attention — Android presentation</td><td>Name <strong>Vaani</strong>, a valid opaque RGB <strong>1024 × 1024 PNG</strong> launcher source, and a <code>contain</code> splash configuration are present. The icon was visually inspected. Android adaptive/monochrome icon assets are not explicitly configured; review masking and Android 12+ splash rendering on an actual Android release. The launcher source is not the separate Play listing icon: Google’s listing specification calls for a <strong>512 × 512, 32-bit PNG</strong>. That separate listing asset was not found in the app image directory; existing Console assets are unknown.</td></tr>
+<tr><td>4. Permissions</td><td class="status">Needs attention</td><td>The app config is not the whole permission inventory. Introspection includes microphone, internet, vibration, storage read/write, and overlay permission. Installed library manifests add camera, network state, audio settings, and foreground-service/media-playback permissions. Review and restrict this combined set before release. See the detailed inventory below. The final merged AAB manifest is not available.</td></tr>
+<tr><td>5. Privacy policy</td><td class="status">Pass — public URL<br>Needs attention — accuracy</td><td><a href="https://askvaani.org/privacy">askvaani.org/privacy</a> returned HTTP 200. The app currently links to an older public hostname whose privacy page also returned 200. Both describe Vaani and Gemini report analysis, but omit the audio-upload transcription fallback and anonymous analytics/survey storage. Update the policy and appropriate in-app disclosures; use a consistent canonical policy URL in app and Console. No Console privacy-policy field or Data safety submission was verified.</td></tr>
+<tr><td>6. Target API</td><td class="status">Pass — SDK configuration<br>Not verified — signed bundle</td><td>Google’s current rule requires <strong>Android 16 / API 36</strong> for new phone apps and updates, effective August 31, 2026. The extension deadline of November 1, 2026 has passed. Vaani uses Expo SDK 54 / React Native 0.81.5; installed React Native defaults show <code>targetSdk=36</code> and <code>compileSdk=36</code>, matching Expo’s official SDK 54 documentation. No target override was found in the reviewed app configuration. Confirm API 36 in the eventual release AAB rather than treating a framework default as binary certification.</td></tr>
+<tr><td>7. Production configuration</td><td class="status">Pass — endpoint configuration<br>Needs attention / not verified</td><td>The production profile and existing fallback configuration point to <code>askvaani.org</code>. Deployment metadata confirms a public, successfully built production deployment there; <code>GET /api/healthz</code> returned HTTP 200 and <code>{"status":"ok"}</code>. Native URL resolution enforces HTTPS. No test-key references, localhost endpoints, TODO/FIXME placeholders, or development-host references were found in the reviewed runtime source paths. This is not a secret-value audit or full security scan. Review unrestricted response-body/error logging and Android backup settings, and verify a real release variant without a development client. Bundled endpoint values and signing remain unverified.</td></tr>
+<tr><td>8. Billing</td><td class="status">Not applicable — current implementation</td><td>No purchase UI, paywall, subscription implementation, or billing SDK was found in the reviewed mobile app and dependencies. There is no existing Google Play Billing integration to certify. If paid digital features or subscriptions are introduced, billing policy and integration must be reviewed before enabling purchases.</td></tr>
+</tbody></table></div>
+
+<h2>Priority findings</h2>
+<section><h3>1. Correct the privacy policy before store submission</h3>
+<ul>
+<li><strong>Audio fallback:</strong> the published policy says Vaani does not receive audio recordings. However, <code>hooks/useDictation.ts</code> can record audio and send it to the backend transcription endpoint; <code>artifacts/api-server/src/routes/transcribe.ts</code> forwards audio to Gemini. Disclose that conditional path and relevant processing/retention. The normal native-recognizer path does not make the fallback disappear.</li>
+<li><strong>Analytics and surveys:</strong> <code>lib/analytics.ts</code> creates a persistent random device-scoped identifier and sends usage events and optional survey feedback. The backend analytics route inserts these into database tables. Events include selected preset condition identifiers; custom topics are represented as “custom” rather than their typed label in the inspected selection event. Explain the actual data, purpose, retention/deletion, and sharing, and make Data safety answers match it. Do not describe all server processing as non-persistent.</li>
+<li><strong>Android backups:</strong> introspection sets <code>android:allowBackup="true"</code>. Locally stored preparations may be eligible for OS backup unless excluded. Review backup rules and the policy’s “device only” / “deleted when you delete the app” wording. Actual backup behavior and rules in a release are not verified.</li>
+<li><strong>Health-app requirements:</strong> Google requires a Health apps declaration and a comprehensive public policy. For an app not regulated as a medical device, its store description must include Google’s required non-medical-device disclaimer and remind users to consult a healthcare professional. Existing in-app “not medical advice” wording is helpful but does not prove the store listing complies.</li>
+</ul></section>
+
+<section><h3>2. Minimize the actual Android permission set</h3>
+<div class="scroll"><table><thead><tr><th>Permission</th><th>Evidence / assessment</th></tr></thead><tbody>
+<tr><td><code>INTERNET</code></td><td>Introspection and library manifests. Required for optional AI, reference lookups and telemetry.</td></tr>
+<tr><td><code>RECORD_AUDIO</code></td><td>App config, introspection and expo-audio. Justified by dictation. Validate runtime consent and denial behavior on Android.</td></tr>
+<tr><td><code>CAMERA</code></td><td>expo-image-picker library manifest; used by the report camera flow. Not visible in the introspection-only permission list, demonstrating why the final merge matters.</td></tr>
+<tr><td><code>READ_EXTERNAL_STORAGE</code><br><code>WRITE_EXTERNAL_STORAGE</code></td><td>Introspection, expo-file-system and expo-image-picker manifests. Broad legacy permissions need review for older supported Android versions; do not remove blindly without testing file picking/export compatibility. The gallery flow explicitly requests media-library access before launching an image picker; prefer selected-file/photo-picker access where sufficient.</td></tr>
+<tr><td><code>SYSTEM_ALERT_WINDOW</code></td><td>Present in the introspected template manifest. No Vaani overlay feature was found. Inspect/remove or block it for release if not needed; confirm final merged result.</td></tr>
+<tr><td><code>FOREGROUND_SERVICE</code><br><code>FOREGROUND_SERVICE_MEDIA_PLAYBACK</code></td><td>Installed expo-audio library manifest. No background media-playback feature was identified. Assess whether they can be removed without affecting required foreground dictation. Final component/permission merge and any Console declarations need verification.</td></tr>
+<tr><td><code>VIBRATE</code><br><code>MODIFY_AUDIO_SETTINGS</code><br><code>ACCESS_NETWORK_STATE</code></td><td>Vibration is added by the template/haptics, audio settings by expo-audio, and network state by expo-image. Lower-risk supporting permissions, but still retain only where justified by used functionality.</td></tr>
+</tbody></table></div>
+<p>Broad <code>READ_MEDIA_IMAGES</code>/<code>READ_MEDIA_VIDEO</code> declarations were not seen in the inspected config and direct-library manifests. This does not certify their absence from an eventual merged bundle. Google requires occasional photo access to use a system picker instead of unnecessary broad access.</p>
+</section>
+
+<section><h3>3. Finish the release-only checks</h3>
+<ul>
+<li>Confirm package ownership and the highest prior version code in Play Console; confirm the remote auto-increment counter.</li>
+<li>Confirm Play App Signing/upload-key ownership and certificate fingerprints. No credentials were opened or requested, and no signed AAB was available in the inspected workspace.</li>
+<li>Inspect the signed release’s target API, final permissions, services, backup rules, debuggable flag, embedded API domain, and absence of a development client.</li>
+<li>Check all native libraries and packaging for <strong>16 KB page-size compatibility</strong>; framework versions alone do not certify third-party native libraries. Consult the current Android guidance and the app’s Console warnings/deadlines.</li>
+<li>On physical Android or an appropriate emulator, verify cold start/splash, icon masks, safe areas, microphone/camera denial and recovery, selected-file access, PDF/photo report upload, export/share/print, and offline/network failure behavior. No new Android device tests were performed for this audit.</li>
+<li>Complete Data safety, Health apps, content rating, target audience, store description, screenshots and applicable testing/production-access requirements in Play Console. Account status and declarations were not accessed.</li>
+</ul>
+<p>The existing <code>app.config.js</code> dynamically supplies a production-domain fallback; the production profile explicitly supplies the same domain. Runtime source uses that domain, while the development start script intentionally uses a development host. The preview-building script contains Metro/Expo Go/debug metadata; it is not evidence that a separately built native release contains those values. Validate the actual release rather than confusing a preview export with a Play bundle.</p>
+</section>
+
+<h2>Method and limits</h2>
+<p>Read-only review of app.json, the existing dynamic config and production profile, mobile package declarations, Expo Android configuration introspection, installed direct native-module manifests, React Native SDK defaults, relevant API/dictation/upload/analytics code, and public privacy pages. Public GET requests checked production health and both observed privacy URLs. No purchases, generated AI requests, production data queries, credential access, build submission, or configuration edits were performed.</p>
+<p>Introspection runs config plugins but is <strong>not</strong> the final Android Gradle manifest merge. Dependencies can add permissions absent from app.json and introspection. Remote version counters, third-party processor retention, Play Console settings, and signed-release behavior remain unverified. Findings describe the current reviewed source, not a certification of the existing installed/store binary.</p>
+
+<h2>Official references</h2>
+<ul>
+<li><a href="https://support.google.com/googleplay/android-developer/answer/11926878?hl=en">Google Play target API requirements</a></li>
+<li><a href="https://expo.dev/changelog/sdk-54">Expo SDK 54: Android 16 / API 36 default</a></li>
+<li><a href="https://support.google.com/googleplay/android-developer/answer/16679511?hl=en">Google Play Health Content and Services policy</a></li>
+<li><a href="https://support.google.com/googleplay/android-developer/answer/15800983?hl=en">Google Play Photo and Video Permissions policy</a></li>
+<li><a href="https://developer.android.com/distribute/google-play/resources/icon-design-specifications">Google Play listing icon specification</a></li>
+<li><a href="https://developer.android.com/guide/practices/page-sizes">Android 16 KB page-size compatibility guidance</a></li>
+</ul>
+<footer>Prepared for Vaani. Application behavior was not changed. Resolve findings, then obtain signed-release and Play Console evidence before release sign-off.</footer>
+</main></body></html>

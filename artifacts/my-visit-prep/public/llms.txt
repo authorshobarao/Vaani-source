@@ -1,0 +1,42 @@
+# My Visit Prep (Vaani)
+
+> My Visit Prep is a free tool that helps patients prepare better questions before doctor appointments. Users describe their symptoms and health concerns in plain language, and the app uses AI to generate a focused, prioritized list of questions to bring to their visit. Users can also upload a lab report or medical document to get clarifying questions about their results. It works without an account; all notes stay on your device.
+
+## Key pages
+
+- [Home](/): Enter symptoms or concerns and generate a personalized question list for your next doctor visit.
+- [Privacy Policy](/privacy): How the app handles your health information.
+
+## Localized versions
+
+The app is available in 17 languages. Each language has its own URL prefix:
+
+- English (default): /
+- Spanish: /es/
+- Hindi: /hi/
+- Vietnamese: /vi/
+- Chinese: /zh/
+- Tamil: /ta/
+- Kannada: /kn/
+- French: /fr/
+- Portuguese: /pt/
+- Filipino: /tl/
+- Japanese: /ja/
+- Korean: /ko/
+- Thai: /th/
+- Indonesian: /id/
+- Bengali: /bn/
+- Urdu: /ur/
+- Telugu: /te/
+- Malayalam: /ml/
+
+## Intended audience
+
+Patients preparing for a medical appointment who want to make the most of limited time with their doctor.
+
+## Notes
+
+- No account or login is required.
+- Health descriptions and uploaded reports are processed transiently and are not stored.
+- The companion mobile app (Vaani) offers the same functionality on iOS.
+- Vaani is an educational preparation tool. It does not provide medical advice, diagnosis, or treatment.

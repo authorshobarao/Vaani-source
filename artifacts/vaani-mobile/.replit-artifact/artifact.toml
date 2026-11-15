@@ -1,0 +1,27 @@
+kind = "mobile"
+previewPath = "/vaani-mobile/"
+title = "Vaani"
+version = "1.0.0"
+id = "artifacts/vaani-mobile"
+router = "expo-domain"
+
+[[integratedSkills]]
+name = "expo"
+version = "1.0.0"
+
+[[services]]
+ensurePreviewReachable = "/status"
+name = "expo"
+paths = [ "/vaani-mobile/" ]
+localPort = 24948
+
+[services.development]
+run = "pnpm --filter @workspace/vaani-mobile run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/vaani-mobile", "run", "build" ]
+run = [ "pnpm", "--filter", "@workspace/vaani-mobile", "run", "serve" ]
+
+[services.env]
+PORT = "24948"
+BASE_PATH = "/vaani-mobile/"

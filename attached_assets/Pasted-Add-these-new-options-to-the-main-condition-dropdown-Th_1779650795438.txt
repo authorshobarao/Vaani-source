@@ -1,0 +1,52 @@
+Add these new options to the main condition dropdown: "Thyroid condition", 
+"PCOS / gynecological", and "Mental health (depression / anxiety)". Use the same 
+category-grouped, checkable, printable, saved structure as the other conditions.
+
+THYROID CONDITION
+- Understanding it: Is my thyroid overactive or underactive? What were my TSH, T3, and 
+  T4 levels? What caused this (for example, Hashimoto's or Graves')? Is it permanent?
+- Treatment: What medication do I need, and at what dose? How long until I feel better? 
+  What if I still feel off after starting it?
+- Monitoring: How often do we recheck my levels? What symptoms mean my dose is wrong?
+- Daily life: How should I take my medication (timing, food, other meds)? Does this 
+  affect my weight, energy, mood, hair, or periods? Does it affect pregnancy or fertility?
+- Follow-up: When is my next blood test and visit?
+
+PCOS / GYNECOLOGICAL
+- Understanding it: What's causing my symptoms? What tests confirm it (hormones, 
+  ultrasound)? 
+- Symptoms & treatment: What are my options for irregular periods, acne, or unwanted 
+  hair? Do I need birth control, metformin, or something else? What are the side effects?
+- Fertility: How does this affect my ability to get pregnant? What can help if I want 
+  to conceive — now or later?
+- Long-term health: What's my risk for diabetes, heart issues, or other problems, and 
+  how do we watch for them?
+- Lifestyle: Do diet, weight, or exercise changes help, and how much?
+- For general gynecological visits: Do I need a Pap smear or HPV test, and when? Is 
+  this bleeding/pain/discharge normal? When should I come back?
+- Follow-up & second opinions: When do we recheck? How do I get a referral if I want one?
+
+MENTAL HEALTH (DEPRESSION / ANXIETY)
+- Understanding it: What do you think is going on? Could anything physical (thyroid, 
+  vitamins, sleep, medications) be contributing?
+- Options: What are my treatment options — therapy, medication, or both? What do you 
+  recommend and why? How long until I might feel a difference?
+- Medication: What are the side effects? Is it habit-forming? What if the first one 
+  doesn't work? How and when would I stop it safely?
+- Therapy & support: What kind of therapy fits me, and how do I find someone? Are there 
+  support groups or low-cost options?
+- Daily life & follow-up: What can I do day to day? When should we check in again? Who 
+  do I contact if things get worse before then?
+
+SAFETY: At the very top of the Mental Health section, show a calm, supportive box:
+"If you're in crisis or thinking about harming yourself, you deserve help right now. 
+In the US, call or text 988 (Suicide & Crisis Lifeline). If you're elsewhere, contact 
+your local emergency number or a crisis line." (Make this easy to localize later.)
+
+ENRICH the existing breast cancer questions under Cancer with these additions:
+- Should I get genetic testing (BRCA1/BRCA2), and would it change my treatment or my 
+  family's screening?
+- What's my hormone-receptor (ER/PR) and HER2 status, and what does it mean for me?
+- What are my surgery options (lumpectomy vs. mastectomy) and reconstruction options?
+- Will I need chemo, radiation, or hormone therapy, and in what order?
+- How will treatment affect fertility, and can I preserve options before starting?

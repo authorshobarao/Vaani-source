@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Vaani — Proposed privacy-policy corrections</title>
+<style>
+body{margin:0;background:#fdf3e7;color:#3a342e;font:16px/1.65 system-ui,sans-serif}main{max-width:900px;margin:auto;padding:36px 24px 70px}h1,h2,h3{line-height:1.25;color:#0f6e6e}h2{margin-top:36px}a{color:#0f6e6e}section{background:#fffaf4;border:1px solid #dfd4c5;border-radius:12px;padding:22px;margin:20px 0}.notice{background:#fff0d4;border:1px solid #dfb365;border-radius:10px;padding:18px}.note{border-left:4px solid #f2884b;padding-left:16px;color:#65574b}.pending{font-weight:650;color:#874d00}blockquote{border-left:3px solid #cfc2b2;margin:12px 0;padding-left:16px;color:#6d6358}li{margin:8px 0}code{overflow-wrap:anywhere;font-size:.9em}.small{font-size:14px;color:#71695e}@media print{body{background:white}main{padding:0}section{break-inside:avoid}}
+</style>
+</head>
+<body><main>
+<h1>Vaani: proposed privacy-policy corrections</h1>
+<div class="notice"><strong>Draft for review — not published.</strong> This document provides proposed wording and general information, not legal advice. Have a qualified lawyer review the final policy for the operator’s jurisdiction and users’ locations. Bracketed items and editorial notes must be resolved before publication.</div>
+<p>These are targeted corrections to the existing Vaani privacy policy, not a replacement of working app features or a claim of legal compliance. The live privacy page, app code, analytics settings, and permissions have not been changed.</p>
+<p><strong>Applies to:</strong> Vaani mobile app and website.<br>
+<strong>Operator:</strong> <span class="pending">[CONFIRM exact legal operator name and country]</span>.<br>
+<strong>Privacy contact:</strong> <span class="pending">[CONFIRM public privacy contact email]</span>.<br>
+<strong>Effective date:</strong> <span class="pending">[Set when the corrected policy is approved and published]</span>.</p>
+
+<h2>1. Replace “Our promise”</h2>
+<blockquote>“It is designed to work without an account and to keep your information on your own device.”</blockquote>
+<section><h3>Proposed wording</h3>
+<p>Vaani helps you prepare for doctor visits without requiring an account. Your saved preparation information is generally stored on your own device or in your browser. Some features send information you choose to submit to our servers and service providers, including AI question generation, report analysis, and certain voice-transcription features. We also collect usage events and optional survey responses as explained below.</p>
+<p>Vaani does not display advertising or sell your personal information. You do not need to provide your name, email address, or phone number to prepare for a visit. However, information you type, upload, dictate, or include in feedback may itself contain personal or sensitive health information.</p>
+</section>
+<p class="note">Editorial note: retain the existing no-ads/no-sale commitments only after the operator confirms them. Do not replace “no accounts” with a claim that Vaani can never receive names or other personal information.</p>
+
+<h2>2. Replace “Information stored on your device”</h2>
+<blockquote>“They are not uploaded to our servers and are deleted when you delete the app.”</blockquote>
+<section><h3>Proposed wording</h3>
+<p>Your saved question checklists, personal questions, notes, and recorded-answer text are stored locally in the mobile app or your browser. Vaani does not routinely upload your entire saved preparation. If you choose to submit health information to an AI or transcription feature, the information needed for that feature leaves your device as described in this policy.</p>
+<p>Using “Reset / start fresh” clears preparation information covered by that feature. It does not delete analytics or survey records already sent to our servers, previously exported or shared files, or copies held in device backups.</p>
+<p>Your device or operating system may back up local app information, depending on its settings and the app’s backup configuration. Uninstalling the app or clearing browser storage does not necessarily remove backup copies or files you exported or shared. Temporary recordings and selected-file copies may remain in local cache until removed by the app or operating system.</p>
+</section>
+<p class="note">Editorial note: Android currently permits app backup. Do not promise that uninstalling removes every copy. Confirm the final backup configuration, reset scope, and temporary-file cleanup before finalizing this section.</p>
+
+<h2>3. Replace “Voice dictation”</h2>
+<blockquote>“Speech is converted to text using your device’s built-in speech recognition service … We do not receive or store your audio recordings.”</blockquote>
+<section><h3>Proposed wording</h3>
+<p>When you use a microphone feature, Vaani uses the available transcription method for that feature and platform:</p>
+<ul>
+<li><strong>Device or browser speech recognition:</strong> some dictation features use a speech-recognition service available on your device or browser. That service may process audio on your device or through its provider, depending on your device, browser, language, and settings. Its handling of audio is governed by the provider’s terms and privacy practices.</li>
+<li><strong>Mobile transcription fallback:</strong> when the mobile app uses its recording-based fallback, the recording and selected language are sent over HTTPS to Vaani’s server and then to Google Gemini to produce a transcript.</li>
+<li><strong>Website “Doctor’s answer” recording:</strong> recordings made through this feature are sent over HTTPS to Vaani’s server and then to OpenAI’s Whisper transcription service.</li>
+</ul>
+<p>The transcript is returned so you can review, edit, and use it in your preparation. The reviewed server transcription handlers process recordings in memory and do not intentionally save the recording or transcript as a permanent application database record. This does not mean the recording never leaves your device or that hosting and transcription providers retain no data.</p>
+<p>Only record information you are permitted to record or share. Recording a clinician or another person may require their permission or consent under applicable law.</p>
+</section>
+<p class="note">Before publication: confirm the applicable Google, OpenAI, and hosting arrangements, including retention, diagnostic logging, and model-training terms. Do not promise “immediate deletion,” “zero retention,” or “never used for training” without evidence for the actual service arrangements.</p>
+
+<h2>4. Update report analysis and AI question suggestions</h2>
+<section><h3>Proposed wording</h3>
+<p><strong>Lab reports and documents.</strong> If you choose report analysis, the photo or PDF you select, the relevant condition/context, and your selected language are sent over HTTPS to Vaani’s server and processed using Google Gemini to suggest questions for your doctor. Documents can contain sensitive health information and identifiers. Share only information you are comfortable having processed for this purpose, and remove unnecessary identifiers where practical.</p>
+<p><strong>AI question generation.</strong> If you request suggested questions, Vaani sends the condition, custom topic or medication name, the description/context you submit for that request, and your selected language to its server and Google Gemini. An input that includes your own health details is not anonymous merely because Vaani does not require an account.</p>
+<p>The reviewed application handlers process these request inputs to return suggestions; they do not intentionally create a permanent application database record of uploaded documents or free-text AI prompts. Separate analytics and survey records are stored as described below. Hosting, provider logging, and processor retention must also be considered.</p>
+<p><strong>Medical reference lookups.</strong> Vaani may send the relevant topic or medication search term to U.S. National Library of Medicine services, including MedlinePlus, RxNorm, and DailyMed, to find reference information. If you open an external source link, your browser communicates directly with that source under its privacy practices.</p>
+</section>
+<p class="note">Editorial note: do not state that provider retention or model-training use is prohibited until the operator verifies the applicable contracts and settings. Confirm that the public description continues to match the deployed handlers, not only the development source.</p>
+
+<h2>5. Add “Usage analytics and optional feedback”</h2>
+<section><h3>Proposed wording</h3>
+<p>The mobile app automatically sends usage events to help us understand whether Vaani works well and which features are useful. It creates a random device-scoped identifier and stores it locally so events from the same installation can be associated. This is not an advertising identifier, but it is still an identifier; we should not describe the resulting records as containing no user-related data.</p>
+<p>Events can include the selected language, timestamps, app openings, feature use, question-preparation activity, export method, and the identifier of a selected preset condition. A preset condition identifier can indicate health-related interests. The inspected custom-condition selection event uses the category “custom” rather than the typed custom-condition text.</p>
+<p>The event stream is not intended to include the full text of your saved notes, dictated answers, uploaded documents, or custom-topic input. Information sent separately to an AI feature is handled as described above.</p>
+<p>If you choose to answer the optional feedback survey, we store your response, optional free-text feedback, selected language, and the associated random device identifier. Please do not include unnecessary health details or identifying information in feedback.</p>
+<p>These analytics and survey records are stored in Vaani’s backend database. Clearing your local preparation or uninstalling the app does not automatically delete records already stored on the server.</p>
+<p class="pending">[Before publication, confirm and disclose any active website analytics provider and actual website event collection. The website code contains conditional Umami event hooks; an active deployed tracker and its data practices were not established by this draft review.]</p>
+</section>
+<p class="note">Important implementation dependency: no analytics opt-out, consent switch, or automatic server deletion capability is promised here. Determine the lawful basis and any consent requirements for the markets served, and implement necessary controls before saying they exist. “Anonymous analytics” should not conceal the persistent identifier or condition-related events.</p>
+
+<h2>6. Add “Service providers”</h2>
+<section><h3>Proposed wording</h3>
+<ul>
+<li><strong>Google Gemini — AI processing:</strong> receives request inputs needed to generate questions, analyze selected reports, transcribe recordings on the applicable fallback path, and translate supported content.</li>
+<li><strong>OpenAI — website transcription:</strong> receives audio recordings and the selected language for the website “Doctor’s answer” transcription feature.</li>
+<li><strong>Replit — application hosting and, where configured, managed service routing:</strong> provides infrastructure through which application requests are processed. Hosting infrastructure may process technical request information such as network addresses, timestamps, and error information for service operation and security.</li>
+<li><strong>Device/browser speech-recognition providers:</strong> may process audio when their speech-recognition services are used, according to device/browser configuration and the provider’s practices.</li>
+<li><strong>U.S. National Library of Medicine reference services:</strong> receive relevant condition/medication search terms for medical-source lookups.</li>
+<li class="pending"><strong>[CONFIRM database host, active website analytics provider, other infrastructure/subprocessors, relevant locations, and any other service that receives user data.]</strong></li>
+</ul>
+<p>We use these services to operate Vaani and provide the features described in this policy. Their handling of information is subject to the arrangements and terms applicable to those services.</p>
+</section>
+<p class="note">This is an observed-provider inventory, not a verified list of every legal subprocessor. Do not assert that Vaani or all its providers are HIPAA compliant, store data in a particular country, encrypt all local storage, or exclude all training use without separate confirmation.</p>
+
+<h2>7. Add “Retention, deletion, and your choices”</h2>
+<section><h3>Proposed wording</h3>
+<p>You can choose not to use voice input, report uploads, AI suggestions, or the optional survey. Microphone and camera permissions can be managed in your device/browser settings. Other preparation features remain available, subject to their own data practices. Automatic usage analytics are separate from these optional inputs.</p>
+<p>Local preparation information remains until cleared through the relevant app/browser controls, removed with app data, or otherwise removed by the operating system, subject to backups and previously exported copies. Temporary input processing by Vaani’s handlers is distinct from persistent analytics and survey storage and any provider retention.</p>
+<p class="pending">[CONFIRM actual retention periods and deletion processes for analytics, surveys, service/error logs, database backups, and providers. The reviewed backend does not establish an automatic analytics/survey expiry schedule; do not publish an invented period.]</p>
+<p>For privacy questions or requests relating to access, correction, or deletion, contact <span class="pending">[CONFIRM public privacy email]</span>. Depending on your location and applicable law, you may have rights concerning your personal information. We may need information sufficient to identify the relevant records and verify a request; do not send unnecessary health details.</p>
+<p class="pending">[CONFIRM how the operator can find records associated with a random device identifier, verify a request, fulfill applicable rights, and communicate any lawful limits and response periods. Do not promise a self-service deletion tool or guaranteed deadline that has not been established.]</p>
+</section>
+
+<h2>8. Revise overbroad claims and preview text</h2>
+<ul>
+<li>Replace absolute “No accounts, names, emails, or phone numbers” wording with the narrower statement that Vaani does not require an account or ask for those details to prepare for a visit; user-submitted documents, speech, prompts, surveys, or privacy requests may contain them.</li>
+<li>Retain “no advertising identifiers or cross-app tracking” only after the operator confirms actual website trackers and service settings. Do not confuse a persistent first-party random identifier with an advertising identifier.</li>
+<li>Proposed page-description wording: <strong>“Learn how Vaani handles local preparation data, optional AI and voice features, usage analytics, feedback, and privacy requests.”</strong> This replaces the overbroad current preview claim that all health information stays on the device.</li>
+<li>Keep the medical disclaimer and children/age section under review for the intended audience and applicable law. These corrections do not determine regulatory classification or replace Google Play’s separate health-app and Data safety declarations.</li>
+</ul>
+
+<h2>Publication checklist — editorial, not public policy text</h2>
+<ol>
+<li>Confirm the exact legal operator, country, public privacy contact, intended audience, and countries served.</li>
+<li>Confirm all active processors, hosting/database locations and arrangements, website tracking, retention, and AI training/data-use terms.</li>
+<li>Set real retention/deletion procedures and any required consent or analytics controls; align the wording with implemented behavior.</li>
+<li>Resolve Android backup and temporary-recording handling. Do not promise these have been fixed merely because a draft discusses them.</li>
+<li>Have counsel review jurisdiction-specific obligations, sensitive health-data processing, legal bases, user rights, and transfers.</li>
+<li>After approval, update the public privacy page and its metadata, point web/mobile/Play Console to the same canonical policy, and set the actual effective date. These edits have not been applied.</li>
+<li>Make Play Console disclosures match the final policy and real app behavior. A published policy alone does not resolve implementation or submission requirements.</li>
+</ol>
+<p class="small">Basis: existing Vaani privacy-policy section structure and source review of mobile recording fallback, website answer recording, backend transcription, AI/reference requests, mobile analytics, and survey persistence. No user data, secret values, provider account settings, or production database records were accessed to prepare this draft.</p>
+</main></body></html>

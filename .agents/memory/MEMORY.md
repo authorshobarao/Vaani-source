@@ -1,0 +1,16 @@
+- [Shared Vaani extraction](vaani-shared-extraction.md) — 18 runtime language objects are shared; legacy deposit content is an isolated historical export; preserve index keys and intentional export differences.
+- [Vaani API parity](vaani-api-parity.md) — UI mode names are not API policy aliases; match web/native generation contracts and test live outputs, not just mocked success.
+- [Web answer voice input](web-answer-voice.md) — use direct Whisper for web Doctor's answer, preserve latest typed notes, and keep mobile fallback independent.
+- [Vaani PMF analytics](vaani-pmf-analytics.md) — first-party anonymous events + Sean Ellis survey; PMF strings in content/pmf.ts map, not the 18 per-language files.
+- [js-yaml override cap](js-yaml-override-cap.md) — keep workspace js-yaml override `<5`; v5 drops the default export orval needs, breaking codegen.
+- [Vaani AI provider](vaani-ai-provider.md) — both AI routes use Gemini gemini-2.5-flash via Replit proxy; apiVersion must be "", Gemini rejects degenerate 1x1 images.
+- [Vaani bulk i18n translation](vaani-i18n-bulk-translation.md) — add languages by translating the en.ts object via Gemini from a bash Node script (not the sandbox); watch rate limits + 120s bash timeout.
+- [Expo artifact workflow name](expo-workflow-name.md) — restart name is `artifacts/<slug>: <service name from artifact.toml>`, not always `web`.
+- [Vaani mic dictation fallback](vaani-dictation-fallback.md) — native speech module absent in Expo Go/web; dictation needs the expo-audio + /api/transcribe fallback path.
+- [Vaani voice dictation](vaani-voice-dictation.md) — expo-speech-recognition, one shared native recognizer + many MicButtons; gate with a module-level owner token, owner-only stop(). Needs EAS build to test.
+- [Vaani App Store submission](vaani-appstore-submission.md) — 4 perms (mic/speech/camera/photos) via config plugins; verify with `expo config --type introspect`; bundle id app.replit.vaani (confirmed, ascAppId 6787778755); privacy policy + 6.7" screenshots needed in App Store Connect.
+- [Pin Expo native modules to SDK dist-tags](expo-sdk-dist-tags.md) — `^` on expo-speech-recognition pulled a next-SDK major → native launch crash / App Store rejection; use the sdk-NN dist-tag version.
+- [Unbounded @babel/core override breaks Expo](babel-core-override-expo.md) — cap workspace babel/core override at `<8`; refresh_all_logs after restart (logs are stale snapshots).
+- [pnpm phantom deps in Expo](pnpm-phantom-deps-expo.md) — react-native-worklets requires undeclared @babel/generator/traverse/types; fix via packageExtensions in pnpm-workspace.yaml, not manual installs.
+- [Transitive override compatibility](transitive-override-compatibility.md) — typechecks and bundles may miss CJS/ESM breakage; invoke the real transitive caller before accepting a security override.
+- [Vaani privacy governance](vaani-privacy-governance.md) — Your Voice First is the confirmed operator; do not infer jurisdiction or promise unimplemented privacy controls.
