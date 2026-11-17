@@ -8,6 +8,7 @@ import {
   ActivityIndicator,
   Alert,
   Linking,
+  Platform,
   Pressable,
   StyleSheet,
   Text,
@@ -180,10 +181,20 @@ export function ReportUploadPanel({
   }
 
   function handleUploadPress() {
-    Alert.alert(t.uploadTitle, undefined, [
+    const options = [
       { text: "Take photo", onPress: () => pickFromLibrary(true) },
       { text: "Choose photo", onPress: () => pickFromLibrary(false) },
       { text: "Choose PDF / file", onPress: () => pickDocument() },
+    ];
+    // Android dialogs render at most three buttons (extra ones are silently
+    // dropped), so there we omit the explicit Cancel and let the user dismiss
+    // with back / tap-outside instead.
+    if (Platform.OS === "android") {
+      Alert.alert(t.uploadTitle, undefined, options, { cancelable: true });
+      return;
+    }
+    Alert.alert(t.uploadTitle, undefined, [
+      ...options,
       { text: "Cancel", style: "cancel" },
     ]);
   }

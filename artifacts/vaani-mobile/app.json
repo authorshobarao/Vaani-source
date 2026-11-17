@@ -2,7 +2,7 @@
   "expo": {
     "name": "Vaani",
     "slug": "vaani-mobile",
-    "owner": "baheldeepti",
+    "owner": "your-voice-first",
     "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -27,10 +27,28 @@
       }
     },
     "android": {
-      "package": "app.replit.vaani",
+      "package": "com.yourvoicefirst.vaani",
       "versionCode": 1,
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "backgroundColor": "#c4d2da"
+      },
       "permissions": [
-        "android.permission.RECORD_AUDIO"
+        "android.permission.RECORD_AUDIO",
+        "android.permission.CAMERA",
+        "android.permission.MODIFY_AUDIO_SETTINGS",
+        "android.permission.VIBRATE"
+      ],
+      "blockedPermissions": [
+        "android.permission.FOREGROUND_SERVICE",
+        "android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK",
+        "android.permission.FOREGROUND_SERVICE_MICROPHONE",
+        "android.permission.POST_NOTIFICATIONS",
+        "android.permission.SYSTEM_ALERT_WINDOW",
+        "android.permission.READ_MEDIA_IMAGES",
+        "android.permission.READ_MEDIA_VIDEO",
+        "android.permission.READ_MEDIA_AUDIO",
+        "android.permission.ACCESS_MEDIA_LOCATION"
       ]
     },
     "web": {
@@ -69,7 +87,7 @@
     },
     "extra": {
       "eas": {
-        "projectId": "db2cca27-f091-40ce-8ba5-35d89041b52f"
+        "projectId": "11cf007a-9a15-4559-b471-14eb60c22017"
       }
     }
   }
