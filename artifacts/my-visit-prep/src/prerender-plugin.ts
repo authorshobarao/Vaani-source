@@ -44,7 +44,7 @@ function buildPrivacyContent(): string {
       `</section>`,
     ].join("")),
     `<h2 style="font-size:1.1rem;font-weight:600;margin-top:1.5rem">Contact</h2>`,
-    `<p>For privacy questions or requests, contact ${escHtml(policy.operator)} through <a href="${escHtml(policy.contactUrl)}">yourvoicefirst.org</a>.</p>`,
+    `<p>For privacy questions or requests, email ${escHtml(policy.operator)} at <a href="mailto:${escHtml(policy.contactEmail)}">${escHtml(policy.contactEmail)}</a> or contact us through <a href="${escHtml(policy.contactUrl)}">yourvoicefirst.org</a>.</p>`,
     `</div>`,
   ].join("");
 }

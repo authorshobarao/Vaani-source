@@ -45,8 +45,18 @@ export default function PrivacyScreen() {
           Contact
         </Text>
         <Text style={[styles.body, { color: colors.foreground }]}>
-          For privacy questions or requests, contact Your Voice First through its website.
+          For privacy questions or requests, email Your Voice First at {privacyPolicy.contactEmail} or contact us through our website.
         </Text>
+        <Pressable
+          testID="link-privacy-email"
+          accessibilityRole="link"
+          accessibilityLabel={`Email ${privacyPolicy.contactEmail}`}
+          accessibilityHint="Opens your email app"
+          onPress={() => void Linking.openURL(`mailto:${privacyPolicy.contactEmail}`).catch(() => {})}
+          style={styles.contact}
+        >
+          <Text style={[styles.link, { color: colors.primary }]}>{privacyPolicy.contactEmail}</Text>
+        </Pressable>
         <Pressable
           testID="link-privacy-contact"
           accessibilityRole="link"

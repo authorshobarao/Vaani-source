@@ -47,7 +47,11 @@ export default function Privacy() {
           <section id="contact">
             <h2 className="text-xl font-semibold text-stone-900">Contact</h2>
             <p className="mt-2">
-              For privacy questions or requests, contact {policy.operator} through{" "}
+              For privacy questions or requests, email {policy.operator} at{" "}
+              <a href={`mailto:${policy.contactEmail}`} className="text-[#3a826a] underline">
+                {policy.contactEmail}
+              </a>{" "}
+              or contact us through{" "}
               <a href={policy.contactUrl} className="text-[#3a826a] underline"
                 target="_blank" rel="noopener noreferrer">
                 yourvoicefirst.org
