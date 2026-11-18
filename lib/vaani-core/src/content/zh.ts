@@ -32,7 +32,7 @@ const zh: LanguageData = {
       ],
     },
     uploadTitle: "从您的化验单或医疗报告中添加问题",
-    uploadHint: "上传您最新报告的照片或PDF。它会发送给AI以建议问题，然后即被丢弃——不会被保存。",
+    uploadHint: "上传您最新报告的照片或PDF。它会被安全地发送到我们的服务器和 Google Gemini（一项AI服务）以建议问题。Vaani 不会保存它。",
     uploadButton: "上传报告",
     uploadChooseAnother: "选择其他文件",
     uploadAnalyzing: "正在读取您的报告…",

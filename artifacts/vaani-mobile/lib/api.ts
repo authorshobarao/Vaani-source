@@ -9,7 +9,7 @@ export const API_BASE_URL = resolveApiBaseUrl(
   process.env.EXPO_PUBLIC_DOMAIN,
   Platform.OS === "web" && typeof window !== "undefined" ? window.location.origin : undefined,
 );
-export const { suggestQuestions, analyzeReport, customTopicQuestions, transcribeAudio, ingestEvents, submitPmfSurvey } =
+export const { suggestQuestions, analyzeReport, customTopicQuestions, transcribeAudio, ingestEvents, submitPmfSurvey, reportAiContent } =
   createVaaniClient(async (url, init) => {
     try {
       const response = await fetch(url, init);

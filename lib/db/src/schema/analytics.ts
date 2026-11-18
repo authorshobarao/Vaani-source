@@ -56,3 +56,23 @@ export const insertPmfResponseSchema = createInsertSchema(
 ).omit({ id: true, createdAt: true });
 export type InsertPmfResponse = z.infer<typeof insertPmfResponseSchema>;
 export type PmfResponse = typeof pmfResponsesTable.$inferSelect;
+
+/** User reports of offensive, harmful, or inaccurate AI-generated content. */
+export const aiContentReportsTable = pgTable(
+  "ai_content_reports",
+  {
+    id: serial("id").primaryKey(),
+    deviceId: text("device_id").notNull(),
+    feature: text("feature").notNull(), // "suggestions" | "report" | "topic" | "medication"
+    reason: text("reason").notNull(), // "offensive" | "harmful" | "inaccurate" | "other"
+    content: text("content").notNull(),
+    comment: text("comment"),
+    lang: text("lang"),
+    createdAt: timestamp("created_at", { withTimezone: true })
+      .notNull()
+      .defaultNow(),
+  },
+  (t) => [index("ai_content_reports_created_idx").on(t.createdAt)]
+);
+
+export type AiContentReport = typeof aiContentReportsTable.$inferSelect;

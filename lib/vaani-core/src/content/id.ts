@@ -32,7 +32,7 @@ const id: LanguageData = {
       ]
     },
     "uploadTitle": "Tambahkan pertanyaan dari laporan lab atau medis Anda",
-    "uploadHint": "Unggah foto atau PDF laporan terbaru Anda. Ini dikirim ke AI untuk menyarankan pertanyaan, lalu dibuang — tidak disimpan.",
+    "uploadHint": "Unggah foto atau PDF laporan terbaru Anda. File dikirim dengan aman ke server kami dan Google Gemini (layanan AI) untuk menyarankan pertanyaan. Vaani tidak menyimpannya.",
     "uploadButton": "Unggah laporan",
     "uploadChooseAnother": "Pilih berkas lain",
     "uploadAnalyzing": "Membaca laporan Anda…",

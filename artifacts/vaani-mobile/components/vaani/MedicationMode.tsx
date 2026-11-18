@@ -15,6 +15,7 @@ import { medicationSectionTitles } from "@workspace/vaani-core/content/features"
 import { CategoryCard } from "./CategoryCard";
 import { MedicalSources } from "./MedicalSources";
 import { MicButton } from "./MicButton";
+import { ReportAIContent } from "./ReportAIContent";
 
 
 function verifiedSource(source: MedicalSource): boolean {
@@ -189,6 +190,8 @@ export function MedicationMode({ lang, t }: { lang: string; t: UIStrings }) {
               onAnswerChange={(key, value) => setAnswers(map => ({ ...map, [key]: value }))} />
           </React.Fragment>
         ))}
+        <ReportAIContent feature="medication" lang={lang} t={t}
+          content={[result.drug, ...SECTIONS.flatMap(([id, title]) => [`${title}:`, ...(result.sections[id] ?? [])])].join("\n")} />
         <View testID="key-interactions" style={[styles.panel, { backgroundColor: colors.card, borderColor: colors.border }]}>
           {heading(t.keyInteractions)}
           {food.length || drugs.length ? <>

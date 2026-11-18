@@ -20,6 +20,7 @@ import type {
 } from '@tanstack/react-query';
 
 import type {
+  AiContentReportBody,
   AnalyzeReportBody,
   CustomTopicBody,
   CustomTopicResult,
@@ -463,6 +464,77 @@ export const useSubmitPmfSurvey = <TError = ErrorType<ErrorResponse>,
         TContext
       > => {
       return useMutation(getSubmitPmfSurveyMutationOptions(options));
+    }
+
+export const getReportAiContentUrl = () => {
+
+
+
+
+  return `/api/ai-content-reports`
+}
+
+/**
+ * @summary Report offensive, harmful, or inaccurate AI-generated content
+ */
+export const reportAiContent = async (aiContentReportBody: AiContentReportBody, options?: RequestInit): Promise<OkResponse> => {
+
+  return customFetch<OkResponse>(getReportAiContentUrl(),
+  {
+    ...options,
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', ...options?.headers },
+    body: JSON.stringify(aiContentReportBody)
+  }
+);}
+
+
+
+
+
+export const getReportAiContentMutationOptions = <TError = ErrorType<ErrorResponse>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof reportAiContent>>, TError,{data: BodyType<AiContentReportBody>}, TContext>, request?: SecondParameter<typeof customFetch>}
+): UseMutationOptions<Awaited<ReturnType<typeof reportAiContent>>, TError,{data: BodyType<AiContentReportBody>}, TContext> => {
+
+const mutationKey = ['reportAiContent'];
+const {mutation: mutationOptions, request: requestOptions} = options ?
+      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
+      options
+      : {...options, mutation: {...options.mutation, mutationKey}}
+      : {mutation: { mutationKey, }, request: undefined};
+
+
+
+
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof reportAiContent>>, {data: BodyType<AiContentReportBody>}> = (props) => {
+          const {data} = props ?? {};
+
+          return  reportAiContent(data,requestOptions)
+        }
+
+
+
+
+
+
+  return  { mutationFn, ...mutationOptions }}
+
+    export type ReportAiContentMutationResult = NonNullable<Awaited<ReturnType<typeof reportAiContent>>>
+    export type ReportAiContentMutationBody = BodyType<AiContentReportBody>
+    export type ReportAiContentMutationError = ErrorType<ErrorResponse>
+
+    /**
+ * @summary Report offensive, harmful, or inaccurate AI-generated content
+ */
+export const useReportAiContent = <TError = ErrorType<ErrorResponse>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof reportAiContent>>, TError,{data: BodyType<AiContentReportBody>}, TContext>, request?: SecondParameter<typeof customFetch>}
+ ): UseMutationResult<
+        Awaited<ReturnType<typeof reportAiContent>>,
+        TError,
+        {data: BodyType<AiContentReportBody>},
+        TContext
+      > => {
+      return useMutation(getReportAiContentMutationOptions(options));
     }
 
 export const getGetPmfSummaryUrl = () => {

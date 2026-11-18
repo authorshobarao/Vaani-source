@@ -17,6 +17,7 @@ import { useColors } from "@/hooks/useColors";
 import { suggestQuestions } from "@/lib/api";
 import { mobileApiError } from "@/lib/api-errors";
 import { track } from "@/lib/analytics";
+import { ReportAIContent } from "./ReportAIContent";
 
 export function AISuggestPanel({
   conditionLabel,
@@ -175,6 +176,10 @@ export function AISuggestPanel({
             </Pressable>
           </View>
         ))}
+
+        {questions.length > 0 && (
+          <ReportAIContent feature="suggestions" content={questions.join("\n")} lang={lang} t={t} />
+        )}
 
         <Text style={[styles.disclaimer, { color: colors.mutedForeground }]}>
           {t.aiPanelDisclaimer}

@@ -132,6 +132,33 @@ export const SubmitPmfSurveyResponse = zod.object({
 
 
 /**
+ * @summary Report offensive, harmful, or inaccurate AI-generated content
+ */
+export const reportAiContentBodyDeviceIdMax = 64;
+
+export const reportAiContentBodyContentMax = 8000;
+
+export const reportAiContentBodyCommentMax = 1000;
+
+export const reportAiContentBodyLangMax = 8;
+
+
+
+export const ReportAiContentBody = zod.object({
+  "deviceId": zod.string().max(reportAiContentBodyDeviceIdMax),
+  "feature": zod.enum(['suggestions', 'report', 'topic', 'medication']),
+  "reason": zod.enum(['offensive', 'harmful', 'inaccurate', 'other']),
+  "content": zod.string().max(reportAiContentBodyContentMax),
+  "comment": zod.string().max(reportAiContentBodyCommentMax).optional(),
+  "lang": zod.string().max(reportAiContentBodyLangMax).optional()
+})
+
+export const ReportAiContentResponse = zod.object({
+  "ok": zod.boolean()
+})
+
+
+/**
  * @summary Summary of usage funnel, PMF score, and recent feedback
  */
 export const GetPmfSummaryResponse = zod.object({

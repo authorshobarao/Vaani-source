@@ -58,13 +58,14 @@ export const privacyPolicy = {
     },
     {
       id: "analytics",
-      title: "Usage analytics and optional feedback",
+      title: "Usage analytics, feedback, and AI-content reports",
       paragraphs: [
         "The mobile app automatically sends usage events to help us understand whether Vaani works well and which features are useful. It creates and locally stores a random device-scoped identifier so events from the same installation can be associated. This is not an advertising identifier, but it is still an identifier.",
         "Events can include language, timestamps, app openings, feature use, question-preparation activity, export method, and the identifier of a selected preset condition. A preset condition identifier can indicate health-related interests. The custom-condition selection event records the category custom rather than the typed topic text.",
         "The event stream is not intended to include the full text of saved notes, dictated answers, uploaded documents, or custom-topic inputs. Information submitted separately to an AI feature is handled as described above.",
         "If you choose the optional feedback survey, we store your response, optional free-text feedback, language, and the associated random device identifier. Avoid including unnecessary health details or identifying information in feedback.",
-        "Analytics and survey records are stored in our backend database. Clearing local preparation or uninstalling the app does not automatically delete these server records. Website feature events may also be processed when website analytics integration is enabled.",
+        "If you report an AI-generated response from within the app, we store the reported response text, the reason you chose, any optional comment, the feature it came from, your language, and the associated random device identifier so we can review and improve AI output. Reported text may reflect what you asked about; avoid adding unnecessary health or identifying details in your comment.",
+        "Analytics, survey, and AI-content report records are stored in our backend database. Clearing local preparation or uninstalling the app does not automatically delete these server records. Website feature events may also be processed when website analytics integration is enabled.",
       ],
     },
     {

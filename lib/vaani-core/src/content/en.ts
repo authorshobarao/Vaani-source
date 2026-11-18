@@ -33,7 +33,7 @@ const en: LanguageData = {
       ],
     },
     uploadTitle: "Add questions from your lab or medical report",
-    uploadHint: "Upload a photo or PDF of your latest report. It's sent to the AI to suggest questions, then discarded — it is not saved.",
+    uploadHint: "Upload a photo or PDF of your latest report. It's sent securely to our server and Google Gemini (an AI service) to suggest questions. Vaani doesn't save it.",
     uploadButton: "Upload report",
     uploadChooseAnother: "Choose a different file",
     uploadAnalyzing: "Reading your report…",

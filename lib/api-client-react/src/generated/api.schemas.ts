@@ -137,6 +137,39 @@ export interface PmfSurveyBody {
   lang?: string;
 }
 
+export type AiContentReportBodyFeature = typeof AiContentReportBodyFeature[keyof typeof AiContentReportBodyFeature];
+
+
+export const AiContentReportBodyFeature = {
+  suggestions: 'suggestions',
+  report: 'report',
+  topic: 'topic',
+  medication: 'medication',
+} as const;
+
+export type AiContentReportBodyReason = typeof AiContentReportBodyReason[keyof typeof AiContentReportBodyReason];
+
+
+export const AiContentReportBodyReason = {
+  offensive: 'offensive',
+  harmful: 'harmful',
+  inaccurate: 'inaccurate',
+  other: 'other',
+} as const;
+
+export interface AiContentReportBody {
+  /** @maxLength 64 */
+  deviceId: string;
+  feature: AiContentReportBodyFeature;
+  reason: AiContentReportBodyReason;
+  /** @maxLength 8000 */
+  content: string;
+  /** @maxLength 1000 */
+  comment?: string;
+  /** @maxLength 8 */
+  lang?: string;
+}
+
 export interface OkResponse {
   ok: boolean;
 }

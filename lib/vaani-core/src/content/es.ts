@@ -33,7 +33,7 @@ const es: LanguageData = {
       ],
     },
     uploadTitle: "Añade preguntas a partir de tu laboratorio o informe médico",
-    uploadHint: "Sube una foto o PDF de tu informe más reciente. Se envía a la IA para sugerir preguntas y luego se descarta — no se guarda.",
+    uploadHint: "Sube una foto o PDF de tu informe más reciente. Se envía de forma segura a nuestro servidor y a Google Gemini (un servicio de IA) para sugerir preguntas. Vaani no lo guarda.",
     uploadButton: "Subir informe",
     uploadChooseAnother: "Elegir otro archivo",
     uploadAnalyzing: "Leyendo tu informe…",
