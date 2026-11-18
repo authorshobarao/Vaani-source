@@ -5,8 +5,14 @@ import {
   SubmitPmfSurveyBody,
   SubmitPmfSurveyResponse,
   GetPmfSummaryResponse,
+  ReportAiContentBody,
 } from "@workspace/api-zod";
-import { db, analyticsEventsTable, pmfResponsesTable } from "@workspace/db";
+import {
+  db,
+  analyticsEventsTable,
+  pmfResponsesTable,
+  aiContentReportsTable,
+} from "@workspace/db";
 import { sql, desc, isNotNull, and, ne } from "drizzle-orm";
 import { requireAdminToken } from "../middlewares/admin-auth";
 
@@ -60,6 +66,33 @@ router.post(
     } catch (err) {
       req.log.error({ err }, "Failed to store PMF response");
       res.status(500).json({ error: "Failed to store survey response" });
+    }
+  }
+);
+
+/** In-app reports of offensive, harmful, or inaccurate AI-generated content. */
+router.post(
+  "/ai-content-reports",
+  async (req: Request, res: Response): Promise<void> => {
+    const parsed = ReportAiContentBody.safeParse(req.body);
+    if (!parsed.success || !parsed.data.content.trim()) {
+      res.status(400).json({ error: "Invalid report payload" });
+      return;
+    }
+    const { deviceId, feature, reason, content, comment, lang } = parsed.data;
+    try {
+      await db.insert(aiContentReportsTable).values({
+        deviceId,
+        feature,
+        reason,
+        content: content.trim(),
+        comment: comment?.trim() || null,
+        lang: lang ?? null,
+      });
+      res.json(SubmitPmfSurveyResponse.parse({ ok: true }));
+    } catch (err) {
+      req.log.error({ err }, "Failed to store AI content report");
+      res.status(500).json({ error: "Failed to store report" });
     }
   }
 );

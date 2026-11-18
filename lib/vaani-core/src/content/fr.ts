@@ -32,7 +32,7 @@ const fr: LanguageData = {
       ]
     },
     "uploadTitle": "Ajouter des questions à partir de votre rapport de laboratoire ou médical",
-    "uploadHint": "Téléchargez une photo ou un PDF de votre dernier rapport. Il est envoyé à l'IA pour suggérer des questions, puis supprimé — il n'est pas enregistré.",
+    "uploadHint": "Téléchargez une photo ou un PDF de votre dernier rapport. Il est envoyé de façon sécurisée à notre serveur et à Google Gemini (un service d'IA) pour suggérer des questions. Vaani ne l'enregistre pas.",
     "uploadButton": "Télécharger le rapport",
     "uploadChooseAnother": "Choisir un autre fichier",
     "uploadAnalyzing": "Lecture de votre rapport…",

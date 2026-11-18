@@ -32,7 +32,7 @@ const tl: LanguageData = {
       ]
     },
     "uploadTitle": "Magdagdag ng mga tanong mula sa iyong lab o medical report",
-    "uploadHint": "Mag-upload ng larawan o PDF ng iyong pinakabagong report. Ipapadala ito sa AI upang magmungkahi ng mga tanong, pagkatapos ay itatapon — hindi ito sine-save.",
+    "uploadHint": "Mag-upload ng larawan o PDF ng iyong pinakabagong report. Ligtas itong ipinapadala sa aming server at sa Google Gemini (isang AI service) upang magmungkahi ng mga tanong. Hindi ito sine-save ng Vaani.",
     "uploadButton": "I-upload ang report",
     "uploadChooseAnother": "Pumili ng ibang file",
     "uploadAnalyzing": "Binabasa ang iyong report…",

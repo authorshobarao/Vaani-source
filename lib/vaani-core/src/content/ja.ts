@@ -32,7 +32,7 @@ const ja: LanguageData = {
       ]
     },
     "uploadTitle": "検査報告書または医療レポートから質問を追加",
-    "uploadHint": "最新のレポートの写真またはPDFをアップロードしてください。質問を提案するためにAIに送られ、その後破棄されます — 保存されることはありません。",
+    "uploadHint": "最新のレポートの写真またはPDFをアップロードしてください。質問を提案するため、当社のサーバーと Google Gemini（AIサービス）に安全に送信されます。Vaani は保存しません。",
     "uploadButton": "レポートをアップロード",
     "uploadChooseAnother": "別のファイルを選択",
     "uploadAnalyzing": "レポートを読み込み中…",

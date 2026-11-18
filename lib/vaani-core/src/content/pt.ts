@@ -32,7 +32,7 @@ const pt: LanguageData = {
       ]
     },
     "uploadTitle": "Adicionar perguntas do seu relatório de exames ou médico",
-    "uploadHint": "Envie uma foto ou PDF do seu último relatório. Ele é enviado à IA para sugerir perguntas, e depois descartado — não é salvo.",
+    "uploadHint": "Envie uma foto ou PDF do seu último relatório. Ele é enviado com segurança ao nosso servidor e ao Google Gemini (um serviço de IA) para sugerir perguntas. O Vaani não o salva.",
     "uploadButton": "Enviar relatório",
     "uploadChooseAnother": "Escolher um arquivo diferente",
     "uploadAnalyzing": "Lendo seu relatório…",

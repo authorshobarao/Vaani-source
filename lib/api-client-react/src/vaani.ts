@@ -1,5 +1,5 @@
 /** Transport injection keeps native fetch and browser storage out of shared logic. */
-import type { SuggestQuestionsBody, AnalyzeReportBody, CustomTopicResult, CustomTopicBody, TranscribeBody, IngestEventsBody, IngestEventsResponse, PmfSurveyBody, OkResponse, PmfSummaryResponse } from "./generated/api.schemas";
+import type { SuggestQuestionsBody, AnalyzeReportBody, CustomTopicResult, CustomTopicBody, TranscribeBody, IngestEventsBody, IngestEventsResponse, PmfSurveyBody, AiContentReportBody, OkResponse, PmfSummaryResponse } from "./generated/api.schemas";
 export type VaaniTransport = (url: string, init: { method: "POST" | "GET"; headers: Record<string, string>; body?: string; signal?: AbortSignal }) => Promise<Pick<Response, "ok" | "status" | "json">>;
 export type SuggestParams = SuggestQuestionsBody;
 export type AnalyzeParams = AnalyzeReportBody;
@@ -63,6 +63,11 @@ export function createVaaniClient(transport: VaaniTransport, baseUrl = "") {
     async submitPmfSurvey(params: PmfSurveyBody): Promise<OkResponse> {
       const data = await post("pmf-survey", params);
       if (data.ok !== true) throw new Error("Invalid survey response");
+      return { ok: true };
+    },
+    async reportAiContent(params: AiContentReportBody): Promise<OkResponse> {
+      const data = await post("ai-content-reports", params);
+      if (data.ok !== true) throw new Error("Invalid report response");
       return { ok: true };
     },
     async getPmfSummary(token: string): Promise<PmfSummaryResponse> {

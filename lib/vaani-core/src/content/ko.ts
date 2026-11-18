@@ -32,7 +32,7 @@ const ko: LanguageData = {
       ]
     },
     "uploadTitle": "검사 또는 진료 기록에서 질문 추가하기",
-    "uploadHint": "최신 기록의 사진이나 PDF를 업로드하세요. 질문을 제안하기 위해 AI로 전송된 후 즉시 삭제되며 — 저장되지 않습니다.",
+    "uploadHint": "최신 기록의 사진이나 PDF를 업로드하세요. 질문을 제안하기 위해 저희 서버와 Google Gemini(AI 서비스)로 안전하게 전송됩니다. Vaani는 이를 저장하지 않습니다.",
     "uploadButton": "기록 업로드",
     "uploadChooseAnother": "다른 파일 선택",
     "uploadAnalyzing": "기록을 읽는 중…",

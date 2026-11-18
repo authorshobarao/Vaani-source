@@ -131,6 +131,30 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
+  /ai-content-reports:
+    post:
+      operationId: reportAiContent
+      tags: [analytics]
+      summary: Report offensive, harmful, or inaccurate AI-generated content
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AiContentReportBody"
+      responses:
+        "200":
+          description: Report stored
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OkResponse"
+        "400":
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
   /pmf-summary:
     get:
       operationId: getPmfSummary
@@ -378,6 +402,32 @@ components:
       required:
         - deviceId
         - disappointment
+    AiContentReportBody:
+      type: object
+      properties:
+        deviceId:
+          type: string
+          maxLength: 64
+        feature:
+          type: string
+          enum: [suggestions, report, topic, medication]
+        reason:
+          type: string
+          enum: [offensive, harmful, inaccurate, other]
+        content:
+          type: string
+          maxLength: 8000
+        comment:
+          type: string
+          maxLength: 1000
+        lang:
+          type: string
+          maxLength: 8
+      required:
+        - deviceId
+        - feature
+        - reason
+        - content
     OkResponse:
       type: object
       properties:

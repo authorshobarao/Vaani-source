@@ -21,6 +21,7 @@ import { useColors } from "@/hooks/useColors";
 import { analyzeReport } from "@/lib/api";
 import { mobileApiError } from "@/lib/api-errors";
 import { track } from "@/lib/analytics";
+import { ReportAIContent } from "./ReportAIContent";
 
 import { MAX_UPLOAD_BYTES } from "@workspace/vaani-core";
 const ACCEPTED_TYPES = [
@@ -311,6 +312,10 @@ export function ReportUploadPanel({
             </Pressable>
           </View>
         ))}
+
+        {questions.length > 0 && (
+          <ReportAIContent feature="report" content={questions.join("\n")} lang={lang} t={t} />
+        )}
 
         <Text style={[styles.disclaimer, { color: colors.mutedForeground }]}>
           {t.aiPanelDisclaimer}

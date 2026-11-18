@@ -33,7 +33,7 @@ const vi: LanguageData = {
       ],
     },
     uploadTitle: "Thêm câu hỏi từ kết quả xét nghiệm hoặc hồ sơ y tế của bạn",
-    uploadHint: "Tải lên ảnh chụp hoặc tệp PDF kết quả gần đây nhất của bạn. Nó được gửi tới AI để gợi ý câu hỏi rồi bị xóa ngay — không được lưu lại.",
+    uploadHint: "Tải lên ảnh chụp hoặc tệp PDF kết quả gần đây nhất của bạn. Tệp được gửi an toàn đến máy chủ của chúng tôi và Google Gemini (một dịch vụ AI) để gợi ý câu hỏi. Vaani không lưu tệp này.",
     uploadButton: "Tải lên kết quả",
     uploadChooseAnother: "Chọn tệp khác",
     uploadAnalyzing: "Đang đọc kết quả của bạn…",

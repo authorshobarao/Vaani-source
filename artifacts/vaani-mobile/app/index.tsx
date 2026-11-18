@@ -43,6 +43,7 @@ import { customTopicQuestions } from "@/lib/api";
 import { mobileApiError } from "@/lib/api-errors";
 import { conditionSectionTitles } from "@workspace/vaani-core/content/features";
 import { flush, track } from "@/lib/analytics";
+import { ReportAIContent } from "@/components/vaani/ReportAIContent";
 import { recordExportAndCheckSurvey } from "@/lib/pmf-survey";
 import { qKey } from "@/lib/keys";
 
@@ -985,6 +986,13 @@ export default function HomeScreen() {
                     ))}
                   </View>
                 )}
+              </View>
+            )}
+
+            {customTopic && (customTopic.categories?.length ?? 0) > 0 && (
+              <View style={{ marginTop: spacing.md }}>
+                <ReportAIContent feature="topic" lang={lang} t={t.ui}
+                  content={[customTopic.label, ...(customTopic.categories ?? []).flatMap(cat => [`${cat.title}:`, ...cat.questions])].join("\n")} />
               </View>
             )}
 
