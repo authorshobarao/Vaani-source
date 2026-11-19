@@ -7,6 +7,7 @@ import { useWebDictation } from "@/hooks/useWebDictation";
 import { DoctorNotes } from "@/components/DoctorNotes";
 import { MedicationList } from "@/components/MedicationList";
 import { MedicalSources } from "@/components/MedicalSources";
+import { ReportAIContent } from "@/components/ReportAIContent";
 import { GENERAL_SOURCES, type MedicalSource } from "@/content/sources";
 import { trackEvent } from "@/lib/analytics";
 import { AlertCircle, Info, Pill, Printer, Quote, RotateCcw } from "lucide-react";
@@ -336,6 +337,11 @@ export function MedicationMode({
                 lang={lang}
               />
             ))}
+          </div>
+
+          <div className="mt-4">
+            <ReportAIContent feature="medication" lang={lang} t={t}
+              content={[result.drug, ...result.categories.filter(cat => cat.id !== "interactions").flatMap(cat => [`${cat.title}:`, ...cat.questions])].join("\n")} />
           </div>
 
           <section className="print-category mt-6 rounded-xl border border-border bg-card overflow-hidden" data-testid="key-interactions">

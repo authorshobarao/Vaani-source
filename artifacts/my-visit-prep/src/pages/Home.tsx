@@ -14,6 +14,7 @@ import { conditionSectionTitles } from "@workspace/vaani-core/content/features";
 import { useConditionSpecialists } from "@/hooks/useConditionSpecialists";
 import { DoctorNotes } from "@/components/DoctorNotes";
 import { MedicationMode } from "@/components/MedicationMode";
+import { ReportAIContent } from "@/components/ReportAIContent";
 import { getAboutArticle } from "@/content/sources";
 import { trackEvent } from "@/lib/analytics";
 import vaaniHeroImage from "@assets/Vaani-image_for_askvaanipage_1788670962951.png";
@@ -618,6 +619,10 @@ function AISuggestPanel({
           </ul>
         )}
 
+        {questions.length > 0 && (
+          <ReportAIContent feature="suggestions" content={questions.join("\n")} lang={lang} t={t} />
+        )}
+
         <p className="text-xs text-muted-foreground">{t.aiPanelDisclaimer}</p>
       </div>
     </div>
@@ -807,6 +812,10 @@ function ReportUploadPanel({
               </li>
             ))}
           </ul>
+        )}
+
+        {questions.length > 0 && (
+          <ReportAIContent feature="report" content={questions.join("\n")} lang={lang} t={t} />
         )}
 
         <p className="text-xs text-muted-foreground">{t.aiPanelDisclaimer}</p>
@@ -1795,6 +1804,13 @@ export default function Home({ initialConditionId = "" }: { initialConditionId?:
                     ))}
                   </div>
                 )}
+              </div>
+            )}
+
+            {customTopic && (customTopic.categories?.length ?? 0) > 0 && (
+              <div className="mt-4">
+                <ReportAIContent feature="topic" lang={lang} t={t.ui}
+                  content={[customTopic.label, ...(customTopic.categories ?? []).flatMap(cat => [`${cat.title}:`, ...cat.questions])].join("\n")} />
               </div>
             )}
 
