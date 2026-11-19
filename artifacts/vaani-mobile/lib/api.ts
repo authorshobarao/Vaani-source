@@ -11,17 +11,21 @@ export const API_BASE_URL = resolveApiBaseUrl(
 );
 export const { suggestQuestions, analyzeReport, customTopicQuestions, transcribeAudio, ingestEvents, submitPmfSurvey, reportAiContent } =
   createVaaniClient(async (url, init) => {
+    let response: Awaited<ReturnType<typeof fetch>>;
     try {
-      const response = await fetch(url, init);
-      if (!response.ok) {
-        console.error("[Vaani mobile] HTTP error", {
-          url, status: response.status,
-          responseBody: await response.clone().text().catch(() => "(unreadable response)"),
-        });
-      }
-      return response;
+      response = await fetch(url, init);
     } catch (exception) {
       console.error("[Vaani mobile] Transport failed", { url, status: null, responseBody: null, exception });
       throw exception;
     }
+    if (response.ok) return response;
+    // expo/fetch does not implement Response.clone(), so read the error body
+    // once and hand the client a response whose json() reuses that text.
+    const text = await response.text().catch(() => "");
+    console.error("[Vaani mobile] HTTP error", { url, status: response.status, responseBody: text || "(empty response)" });
+    return {
+      ok: false,
+      status: response.status,
+      json: async () => JSON.parse(text),
+    };
   }, API_BASE_URL);

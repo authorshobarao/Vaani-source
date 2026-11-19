@@ -104,7 +104,12 @@ test("Expo adapter logs HTTP status and original body without consuming the resp
   logs.length = 0;
   const body = JSON.stringify({ error: errors.MEDICATION_NOT_FOUND });
   const adapter = load("artifacts/vaani-mobile/lib/api.ts", {
-    "expo/fetch": { fetch: async () => new Response(body, { status: 400 }) },
+    // Mirrors expo/fetch on Android: clone() is not implemented.
+    "expo/fetch": { fetch: async () => {
+      const response = new Response(body, { status: 400 });
+      response.clone = () => { throw new Error("Not implemented"); };
+      return response;
+    } },
     "@workspace/api-client-react": load("lib/api-client-react/src/vaani.ts"),
     "./api-errors": errors,
   }, { process: { env: {} } });
