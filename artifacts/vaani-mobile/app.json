@@ -79,7 +79,8 @@
           "photosPermission": "Vaani lets you attach a photo of a lab report or medical document so it can suggest questions to ask your doctor.",
           "cameraPermission": "Vaani uses the camera so you can take a photo of a lab report or medical document to get suggested questions."
         }
-      ]
+      ],
+      "./plugins/withOptionalScreenFeatures"
     ],
     "experiments": {
       "typedRoutes": true,
